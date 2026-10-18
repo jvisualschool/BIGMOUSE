@@ -1,5 +1,8 @@
 Options -Indexes
 DirectoryIndex index.html
+<IfModule mod_alias.c>
+    RedirectMatch 301 ^/BIGMOUSE/assets/illustrations/bigmouse-hero-voxel\.png$ /BIGMOUSE/assets/illustrations/bigmouse-hero-voxel.webp
+</IfModule>
 <IfModule mod_headers.c>
     Header always set X-Robots-Tag "noindex, nofollow"
     Header always set X-Content-Type-Options "nosniff"

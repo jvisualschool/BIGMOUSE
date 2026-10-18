@@ -2,8 +2,10 @@
 
 Created on 2026-10-18 with the built-in `image_gen.imagegen` tool.
 
-- Final asset: [bigmouse-hero-voxel.png](../website/assets/illustrations/bigmouse-hero-voxel.png)
-- Actual dimensions: 1672 × 941 pixels, transparent PNG.
+- Final asset: [bigmouse-hero-voxel.webp](../website/assets/illustrations/bigmouse-hero-voxel.webp)
+- Actual dimensions: 1672 × 941 pixels, transparent WebP.
+- Generated as PNG and converted with `cwebp -q 85 -alpha_q 100 -m 6 -sharp_yuv -metadata none`. The alpha channel is lossless and pixel-identical to the PNG. File size dropped from 885,923 to 134,564 bytes (84.8% smaller); dimensions are unchanged.
+- The deployed site redirects the former PNG URL to the WebP file. The PNG is removed from the current source tree and public deployment; the original remains recoverable from Git history.
 - Purpose: the right side of the BigMouse website hero, with a blue pointer, golden highlight, magnifier, keyboard and friendly mouse.
 - This is an illustrative image, not a screenshot of the app. All settings images in `website/assets/screenshots/` are actual native app captures.
 
