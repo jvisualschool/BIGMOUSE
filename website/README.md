@@ -12,7 +12,7 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| 첫 공개 버전 | **ver 0.7** — 미공증 테스트 버전 (Pre-release) |
+| 첫 공개 버전 | **ver 0.7** |
 | 홈페이지 | [jvibeschool.org/BIGMOUSE](https://jvibeschool.org/BIGMOUSE/) |
 | GitHub | [jvisualschool/BIGMOUSE](https://github.com/jvisualschool/BIGMOUSE/) |
 | 앱 다운로드 | [v0.7 테스트 릴리스](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)에서 무료 다운로드 |
@@ -21,7 +21,7 @@
 | 표시 언어 | macOS 지역이 대한민국이면 한국어, 그 외 지역이면 영어 |
 | 사용 요금 | 무료 |
 
-> **테스트 배포:** ver 0.7 / 빌드 15는 Apple Silicon용 미공증 테스트 버전입니다. 임시 서명(ad hoc)만 적용되어 있으며 Developer ID 서명·Hardened Runtime·Apple 공증은 없습니다. macOS가 첫 실행을 차단할 수 있습니다. 별도 Mac에서의 신규 설치, Intel Mac과 macOS 13 실기기 검증은 완료하지 않았습니다.
+> **배포 정보:** ver 0.7 / 빌드 15는 Apple Silicon용입니다. 임시 서명(ad hoc)만 적용되어 있으며 Developer ID 서명·Hardened Runtime·Apple 공증은 없습니다. macOS가 첫 실행을 차단할 수 있습니다. 별도 Mac에서의 신규 설치, Intel Mac과 macOS 13 실기기 검증은 완료하지 않았습니다.
 
 **[앱 ZIP 다운로드](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip)** · [SHA-256](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip.sha256) · [릴리스 노트](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)
 
@@ -331,7 +331,7 @@ macOS 보안 입력을 감지하면 키 표시를 비웁니다. 모든 앱의 �
 
 ### 1. 정말 무료인가요? App Store에서 받아야 하나요?
 
-무료입니다. [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases)와 [홈페이지](https://jvibeschool.org/BIGMOUSE/)에서 직접 배포합니다. App Store 설치, 회원 가입, 구독, 유료 기능 해제는 필요하지 않습니다. 첫 공개 버전 ver 0.7은 미공증 테스트 버전으로 제공합니다.
+무료입니다. [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases)와 [홈페이지](https://jvibeschool.org/BIGMOUSE/)에서 직접 배포합니다. App Store 설치, 회원 가입, 구독, 유료 기능 해제는 필요하지 않습니다. 첫 공개 버전은 ver 0.7입니다.
 
 ### 2. 실행했는데 창도 Dock 아이콘도 보이지 않아요.
 

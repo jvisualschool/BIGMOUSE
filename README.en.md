@@ -12,7 +12,7 @@ Help an audience follow your actions during lessons, online classes, software de
 
 | Item | Details |
 | --- | --- |
-| First public version | **ver 0.7** — unnotarized test release (Pre-release) |
+| First public version | **ver 0.7** |
 | Website | [jvibeschool.org/BIGMOUSE](https://jvibeschool.org/BIGMOUSE/) |
 | GitHub | [jvisualschool/BIGMOUSE](https://github.com/jvisualschool/BIGMOUSE/) |
 | Downloads | Free download from the [v0.7 test release](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7) |
@@ -21,7 +21,7 @@ Help an audience follow your actions during lessons, online classes, software de
 | Interface language | Korean for the South Korea macOS region; English everywhere else |
 | Price | Free |
 
-> **Test release:** Version 0.7 / build 15 is an unnotarized Apple Silicon test build. It has an ad hoc signature, with no Developer ID signing, Hardened Runtime, or Apple notarization. macOS may block its first launch. Installation on another Mac, Intel support, and physical macOS 13 testing remain unverified.
+> **Release information:** Version 0.7 / build 15 is for Apple Silicon. It has an ad hoc signature, with no Developer ID signing, Hardened Runtime, or Apple notarization. macOS may block its first launch. Installation on another Mac, Intel support, and physical macOS 13 testing remain unverified.
 
 **[Download the app ZIP](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip)** · [SHA-256](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip.sha256) · [Release notes](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)
 
@@ -308,7 +308,7 @@ See [SECURITY.md](SECURITY.md) for processing boundaries and private vulnerabili
 
 ### 1. Is it free? Do I need the App Store?
 
-It is free through [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases) and the [website](https://jvibeschool.org/BIGMOUSE/). No App Store installation, account, subscription, or feature purchase is required. The first public version, 0.7, is an unnotarized test release.
+It is free through [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases) and the [website](https://jvibeschool.org/BIGMOUSE/). No App Store installation, account, subscription, or feature purchase is required. The first public version is ver 0.7.
 
 ### 2. Why is there no window or Dock icon?
 

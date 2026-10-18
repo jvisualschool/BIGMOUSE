@@ -1,6 +1,6 @@
 # GitHub·홈페이지 무료 배포 / Free direct distribution
 
-기준: 2026-10-18. 첫 공개 버전은 **ver 0.7 / 빌드 15**, **미공증 테스트 릴리스(Pre-release)**입니다. Mac App Store에는 배포하지 않습니다.
+기준: 2026-10-18. 첫 공개 버전은 **ver 0.7 / 빌드 15**, **Pre-release**입니다. Mac App Store에는 배포하지 않습니다.
 
 ## 공개 경로
 
@@ -56,7 +56,7 @@ shasum -a 256 -c BigMouse-0.7-macos-arm64.zip.sha256
 
 소스 ZIP은 공개 태그 `v0.7`에서 만들고 별도의 SHA-256 파일을 제공합니다. 앱 ZIP과 소스 ZIP은 각각 용도가 다르며 릴리스에 네 파일을 첨부합니다. GitHub의 자동 소스 ZIP은 설치할 앱이 아닙니다.
 
-GitHub에는 태그 `v0.7`과 **BigMouse ver 0.7 — Unnotarized test release** 제목을 사용합니다. 초안에서 네 파일·링크·버전·체크섬을 검사한 뒤 Pre-release로 공개합니다. 비공개 취약점 제보를 활성화하고 자격증명 검사를 수행합니다.
+GitHub에는 태그 `v0.7`과 **BigMouse ver 0.7** 제목을 사용합니다. 초안에서 네 파일·링크·버전·체크섬을 검사한 뒤 Pre-release로 공개합니다. 비공개 취약점 제보를 활성화하고 자격증명 검사를 수행합니다.
 
 ## 향후 정식 서명·공증
 
@@ -80,10 +80,10 @@ spctl --assess --type execute --verbose=2 dist/BigMouse.app
 
 ## 홈페이지 동기화
 
-릴리스 공개와 다운로드 검증 이후 홈페이지의 다운로드 링크를 갱신합니다. 웹사이트에는 같은 GitHub ZIP·체크섬·릴리스 노트를 연결하며 **미공증 테스트 버전** 안내를 함께 표시합니다. 공개 후 HTTPS 상태·파일 일치·한영 표시·모바일·브라우저 콘솔을 검사합니다. `.org`의 기존 `noindex, nofollow`와 CSP를 유지합니다. 다른 서버 프로젝트나 루트 설정은 수정하지 않습니다.
+릴리스 공개와 다운로드 검증 이후 홈페이지의 다운로드 링크를 갱신합니다. 웹사이트에는 같은 GitHub ZIP·체크섬·릴리스 노트를 연결하며 설치·서명 상태 안내를 함께 표시합니다. 공개 후 HTTPS 상태·파일 일치·한영 표시·모바일·브라우저 콘솔을 검사합니다. `.org`의 기존 `noindex, nofollow`와 CSP를 유지합니다. 다른 서버 프로젝트나 루트 설정은 수정하지 않습니다.
 
 ## English summary
 
-Version 0.7 / build 15 is a free Apple Silicon **unnotarized test pre-release**. It has an ad hoc signature, with no Developer ID, Hardened Runtime or notarization. The website links to the same GitHub app ZIP, checksum and release notes. Fresh installation on another Mac and additional hardware/OS validation remain pending.
+Version 0.7 / build 15 is a free Apple Silicon **pre-release**. It has an ad hoc signature, with no Developer ID, Hardened Runtime or notarization. The website links to the same GitHub app ZIP, checksum and release notes. Fresh installation on another Mac and additional hardware/OS validation remain pending.
 
 The public `main` branch starts with a reviewed snapshot that excludes private work logs and build output. Preserve the existing local development history privately; never push local `master` or use `git push --all`. Continue the public branch from its own history. Validate package contents, downloaded bytes and release metadata, and keep private vulnerability reporting enabled. No separate open-source license has been assigned.
