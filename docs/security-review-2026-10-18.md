@@ -42,7 +42,7 @@
 
 Gitleaks/TruffleHog가 설치되어 있지 않아 로컬 패턴 검사를 사용했습니다. 알 수 없는 토큰 형식·인코딩된 비밀·이미지 내 정보까지 검증하는 검사는 아닙니다.
 
-Git 이력의 작업 일지에는 개인 로컬 경로와 테스트 이력이 있습니다. `.gitattributes`로 소스 ZIP에서 작업 일지를 제외하고, 새 일지는 gitignore로 로컬에만 남깁니다. **이미 존재하는 커밋은 그대로이며, 공개 push 전에 이력 공개 범위를 확인해야 합니다.** 이력 재작성이나 원격 게시를 수행하지 않았습니다.
+Git 이력의 작업 일지에는 개인 로컬 경로와 검증 이력이 있습니다. `.gitattributes`로 소스 ZIP에서 작업 일지를 제외하고, 새 일지는 gitignore로 로컬에만 남깁니다. **이미 존재하는 커밋은 그대로이며, 공개 push 전에 이력 공개 범위를 확인해야 합니다.** 이력 재작성이나 원격 게시를 수행하지 않았습니다.
 
 ## 검증 결과
 
@@ -71,10 +71,10 @@ bc912176362f56d97d3dc80da4feff40742fc81c42aafdbd3130f1b4726d8741
 ## 남은 배포 항목과 검증 한계
 
 1. **정식 배포 서명:** 현재 `Signature=adhoc`, TeamIdentifier 없음, Hardened Runtime·공증 없음. 정상 서명·공증을 마친 최종 파일의 다운로드 설치 검증 필요.
-2. **macOS 권한:** 재빌드 앱에서 입력 모니터링·화면 기록 권한 필요 안내가 다시 나타남. 현재 사용자 설정은 일시 정지 상태로 유지. 권한 재연결과 실제 Fn/Option 테스트는 이번 수정에서 완료하지 않음.
+2. **macOS 권한:** 재빌드 앱에서 입력 모니터링·화면 기록 권한 필요 안내가 다시 나타남. 현재 사용자 설정은 일시 정지 상태로 유지. 권한 재연결과 실제 Fn/Option 동작 확인는 이번 수정에서 완료하지 않음.
 3. **라이선스:** 코드의 공개 라이선스와 제공받은 앱 아이콘의 재배포 조건 미확정. Lucide ISC/MIT 고지는 포함.
 4. **환경:** Intel, macOS 13 실기기, 다중 물리 모니터, 실제 보안 입력 필드, Zoom/OBS 공유, 새 사용자에서의 설치 검증 미실시.
-5. **감사 범위:** 패킷 캡처·메모리 덤프 분석·전문 침투 테스트·Apple 공증 검사는 미실시. 정적 코드 검토 결과와 구분.
+5. **감사 범위:** 패킷 캡처·메모리 덤프 분석·전문 침투 점검·Apple 공증 검사는 미실시. 정적 코드 검토 결과와 구분.
 
 [배포 절차](DISTRIBUTION.md)와 [보안 정책](../SECURITY.md)을 함께 확인합니다.
 
@@ -82,14 +82,14 @@ bc912176362f56d97d3dc80da4feff40742fc81c42aafdbd3130f1b4726d8741
 
 Fixed unnecessary retention of rendered keystroke/image references and stale-file inclusion during rebuilds. Added an explicit release-file allowlist, symlink/overwrite rejection, and checksums. All 178 automated assertions passed; extracted application files match the original and retain a valid local signature.
 
-A pattern-based scan of 92 historical blobs found no matching credentials. This is not a full secret-scanner or penetration-test certification. Existing work-log history still needs publication review.
+A pattern-based scan of 92 historical blobs found no matching credentials. This is not a full secret-scanner or security assessment certification. Existing work-log history still needs publication review.
 
-The current arm64 package is ad hoc signed, not notarized or publicly published. Developer ID/Hardened Runtime/notarization, code/icon licensing, final permission/physical-key testing, and additional hardware/OS validation remain pending.
+The current arm64 package is ad hoc signed, not notarized or publicly published. Developer ID/Hardened Runtime/notarization, code/icon licensing, final permission/physical-key checks, and additional hardware/OS validation remain pending.
 
 
 ## v0.7 공개 전 재검사 — 2026-10-18
 
-- 0.7 / 빌드 15, Apple Silicon 앱을 미공증 테스트 Pre-release로 배포합니다. 위의 0.3.6 검토 수치와 구분합니다.
+- 0.7 / 빌드 15, Apple Silicon 앱을 공식 버전으로 배포합니다. 위의 0.3.6 검토 수치와 구분합니다.
 - 현재 소스에서 기존 자동 검사 178개(112 + 22 × 3)를 재실행하여 모두 통과했습니다.
 - 작업 일지를 제외한 공개 대상 56개 파일에서 위의 7종 자격증명 패턴 일치 0개. 전문 비밀정보 스캐너나 이미지 내 개인정보 분석을 대신하는 검사는 아닙니다.
 - 공개 main은 기존 로컬 Git 이력과 분리한 소스 스냅샷으로 시작하며, 작업 일지·백업·빌드 산출물·이전 로컬 이력은 제외합니다.

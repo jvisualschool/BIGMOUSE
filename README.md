@@ -8,14 +8,14 @@
 
 강의, 온라인 수업, 소프트웨어 시연과 화면 녹화에서 청중이 발표자의 조작을 쉽게 따라오도록 돕습니다. 메뉴 막대에서 실행되며 커서 강조, 클릭 효과, 스포트라이트, 돋보기와 키 입력 표시를 제공합니다.
 
-**첫 공개 버전은 ver 0.7입니다. GitHub와 개발자 홈페이지에서 무료로 배포하며, Mac App Store에는 배포하지 않습니다.** 회원 가입, 구독, 유료 기능 해제가 필요하지 않습니다.
+**첫 공식 버전은 ver 0.7입니다. GitHub와 개발자 홈페이지에서 무료로 배포하며, Mac App Store에는 배포하지 않습니다.** 회원 가입, 구독, 유료 기능 해제가 필요하지 않습니다.
 
 | 항목 | 내용 |
 | --- | --- |
 | 첫 공개 버전 | **ver 0.7** |
 | 홈페이지 | [jvibeschool.org/BIGMOUSE](https://jvibeschool.org/BIGMOUSE/) |
 | GitHub | [jvisualschool/BIGMOUSE](https://github.com/jvisualschool/BIGMOUSE/) |
-| 앱 다운로드 | [v0.7 테스트 릴리스](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)에서 무료 다운로드 |
+| 앱 다운로드 | [v0.7 공식 릴리스](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)에서 무료 다운로드 |
 | 운영체제 | macOS 13 이상을 대상으로 빌드 |
 | 준비·검증한 아키텍처 | Apple Silicon (`arm64`) |
 | 표시 언어 | macOS 지역이 대한민국이면 한국어, 그 외 지역이면 영어 |
@@ -88,7 +88,7 @@ Swift와 macOS 기본 프레임워크로 만든 네이티브 앱입니다. 표�
 
 ### 2. 다운로드
 
-[v0.7 테스트 릴리스](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)에서 받습니다. [BigMouse 홈페이지](https://jvibeschool.org/BIGMOUSE/#download)도 같은 GitHub 앱 ZIP과 체크섬으로 연결됩니다.
+[v0.7 공식 릴리스](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)에서 받습니다. [BigMouse 홈페이지](https://jvibeschool.org/BIGMOUSE/#download)도 같은 GitHub 앱 ZIP과 체크섬으로 연결됩니다.
 
 | ver 0.7 배포 파일 | 용도 |
 | --- | --- |
@@ -123,7 +123,7 @@ shasum -a 256 -c BigMouse-0.7-macos-arm64.zip.sha256
 
 ### macOS가 실행을 차단하는 경우
 
-이 테스트 버전은 미공증 앱이므로 macOS가 실행을 차단할 수 있습니다. 공식 릴리스에서 받은 파일과 체크섬을 확인하고 실행하려는 경우, 앱을 한 번 연 뒤 **시스템 설정 → 개인정보 보호 및 보안 → 그래도 열기**에서 해당 앱을 확인하세요. [Apple의 앱 열기 안내](https://support.apple.com/ko-kr/102445)를 참고하세요. “컴퓨터를 손상시킵니다”나 “손상되었습니다”처럼 다른 경고가 나오면 실행을 중단하고 정확한 문구와 버전을 제보하세요.
+이 앱은 Apple 공증이 없어 macOS가 실행을 차단할 수 있습니다. 공식 릴리스에서 받은 파일과 체크섬을 확인하고 실행하려는 경우, 앱을 한 번 연 뒤 **시스템 설정 → 개인정보 보호 및 보안 → 그래도 열기**에서 해당 앱을 확인하세요. [Apple의 앱 열기 안내](https://support.apple.com/ko-kr/102445)를 참고하세요. “컴퓨터를 손상시킵니다”나 “손상되었습니다”처럼 다른 경고가 나오면 실행을 중단하고 정확한 문구와 버전을 제보하세요.
 
 GitHub·홈페이지 직접 배포에도 **Developer ID 서명과 Apple 공증**을 사용할 수 있습니다. 이는 Mac App Store 등록 절차와 별개입니다. [Apple의 macOS 직접 배포 안내](https://developer.apple.com/macos/distribution/)
 
@@ -331,7 +331,7 @@ macOS 보안 입력을 감지하면 키 표시를 비웁니다. 모든 앱의 �
 
 ### 1. 정말 무료인가요? App Store에서 받아야 하나요?
 
-무료입니다. [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases)와 [홈페이지](https://jvibeschool.org/BIGMOUSE/)에서 직접 배포합니다. App Store 설치, 회원 가입, 구독, 유료 기능 해제는 필요하지 않습니다. 첫 공개 버전은 ver 0.7입니다.
+무료입니다. [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases)와 [홈페이지](https://jvibeschool.org/BIGMOUSE/)에서 직접 배포합니다. App Store 설치, 회원 가입, 구독, 유료 기능 해제는 필요하지 않습니다. 첫 공식 버전은 ver 0.7입니다.
 
 ### 2. 실행했는데 창도 Dock 아이콘도 보이지 않아요.
 

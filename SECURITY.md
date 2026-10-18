@@ -33,11 +33,11 @@ The app code has no network client, server listener, remote updater, shell execu
 
 The build uses a fresh staging bundle. Packaging rejects unexpected files and symlinks and supplies a SHA-256 checksum. Verify checksums from a trusted release channel; a checksum by itself does not authenticate the publisher.
 
-The first public test release is **version 0.7**, free through [GitHub](https://github.com/jvisualschool/BIGMOUSE/) and the [developer website](https://jvibeschool.org/BIGMOUSE/). It is not a Mac App Store release. Developer ID signing and notarization also support direct distribution. [Apple distribution guidance](https://developer.apple.com/macos/distribution/)
+The first official release is **version 0.7**, free through [GitHub](https://github.com/jvisualschool/BIGMOUSE/) and the [developer website](https://jvibeschool.org/BIGMOUSE/). It is not a Mac App Store release. Developer ID signing and notarization also support direct distribution. [Apple distribution guidance](https://developer.apple.com/macos/distribution/)
 
-The public 0.7 / build 15 test app has an **ad hoc signature**, with no Developer ID identity, Hardened Runtime, or Apple notarization. It is marked as a GitHub pre-release. ZIP contents and local signature integrity are checked; installation on another Mac remains unverified. Developer ID signing and notarization are pending for a future signed release. Do not treat the earlier source review or local signature check as Apple approval.
+The official 0.7 / build 15 app has an **ad hoc signature**, with no Developer ID identity, Hardened Runtime, or Apple notarization. It is published as an official GitHub release. ZIP contents and local signature integrity are checked; installation on another Mac remains unverified. Developer ID signing and notarization are pending for a future signed release. Do not treat the earlier source review or local signature check as Apple approval.
 
-See the [dated review](docs/security-review-2026-10-18.md) for findings, fixes, and test limits. This is a focused source/build review, not a penetration-test certificate or a claim that the app has no vulnerabilities.
+See the [dated review](docs/security-review-2026-10-18.md) for findings, fixes, and validation limits. This is a focused source/build review, not a security assessment certificate or a claim that the app has no vulnerabilities.
 
 ## 한국어 안내
 
@@ -45,4 +45,4 @@ See the [dated review](docs/security-review-2026-10-18.md) for findings, fixes, 
 
 키 입력과 확대 화면은 앱에서 파일로 저장하거나 전송하지 않습니다. 설정만 로컬에 저장하며 진단 로그에는 줌 시작 시간만 기록합니다. 일시 정지 시 표시 계층의 입력 문자열·이미지 참조도 제거합니다. 메모리의 완전 삭제나 모든 암호 입력란 보호를 보장하지는 않으므로 민감한 입력 전에는 키 표시를 꺼 주세요.
 
-첫 공개 버전 0.7 / 빌드 15는 GitHub와 홈페이지에서 무료로 제공하는 미공증 테스트 버전입니다. 임시 서명만 적용되며 GitHub Pre-release로 표시합니다. ZIP 내용과 로컬 서명 무결성은 검사하지만 Developer ID 서명·Apple 공증과 별도 Mac에서의 신규 설치 검증은 미완료입니다.
+첫 공개 버전 0.7 / 빌드 15는 GitHub와 홈페이지에서 무료로 제공하는 공식 버전입니다. 임시 서명만 적용되며 GitHub 정식 릴리스로 제공합니다. ZIP 내용과 로컬 서명 무결성은 검사하지만 Developer ID 서명·Apple 공증과 별도 Mac에서의 신규 설치 검증은 미완료입니다.

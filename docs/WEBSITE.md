@@ -7,7 +7,7 @@ The public guide lives at <https://jvibeschool.org/BIGMOUSE/>. The standalone st
 - Korean and English instructions for installation, permissions, cursor/click effects, keystrokes, spotlight and magnification.
 - Actual BigMouse 0.7 settings captures, image enlargement, a presentation checklist and 11 FAQs.
 - A generated voxel hero; see [image provenance and prompt](HERO-IMAGE.md).
-- Links to the v0.7 GitHub test app, checksum, release notes and source repository, with a visible unnotarized-build notice.
+- Links to the v0.7 GitHub app, checksum, release notes and source repository, with a visible unnotarized-build notice.
 
 Initial web language follows the region in the browser locale: `KR` uses Korean; other or unspecified regions use English. The language buttons override this and remember the choice in local storage. This is a browser preference, not IP geolocation. The native app separately uses the macOS region.
 
@@ -48,7 +48,7 @@ Commit locally before publishing. Deploy only the contents of `website/` to the 
 
 Keep `.htaccess` with the upload. It preserves the required `noindex, nofollow` policy, disables directory listings, restricts script/resource origins and denies sensitive file types. Verify HTTPS status, assets, browser console, response security headers and protected paths on the live site. No other project or root server configuration needs to change.
 
-The download area links directly to GitHub v0.7 assets. Keep the test-build and signing status consistent with the actual release. Verify asset checksums after publication. Use the same version and bytes on the website and GitHub.
+The download area links directly to GitHub v0.7 assets. Keep the release and signing status consistent with the actual release. Verify asset checksums after publication. Use the same version and bytes on the website and GitHub.
 
 ## Verified deployment — 2026-10-18
 
@@ -66,6 +66,6 @@ After explicit user authorization for each permission, the current local 0.7 app
 
 The normal spotlight/zoom settings image was refreshed after recovery. The separate permission-warning image is retained as a troubleshooting example. Physical Fn input was not synthesized by the automation tool; magnification was exercised through the app’s 3-second preview. No app rebuild was needed for this permission repair.
 
-## GitHub test release — 2026-10-18
+## GitHub official release — 2026-10-18
 
-The download section now links to the v0.7 Apple Silicon test app, SHA-256 file, release notes and public source repository. Korean and English copy explicitly states the lack of Developer ID signing and Apple notarization. Installation on another Mac remains unverified. The earlier pending-download descriptions above record the initial guide publication state.
+The download section now links to the v0.7 Apple Silicon app, SHA-256 file, release notes and public source repository. Korean and English copy explicitly states the lack of Developer ID signing and Apple notarization. Installation on another Mac remains unverified. The earlier pending-download descriptions above record the initial guide publication state.

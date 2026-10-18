@@ -8,20 +8,20 @@
 
 Help an audience follow your actions during lessons, online classes, software demonstrations, and screen recordings. BigMouse runs in the menu bar and provides cursor highlighting, click effects, a spotlight, a magnifier, and keystroke display.
 
-**The first public test release is ver 0.7, distributed free through GitHub and the developer website. There is no Mac App Store release.** No account, subscription, or paid feature unlock is required.
+**The first official release is ver 0.7, distributed free through GitHub and the developer website. There is no Mac App Store release.** No account, subscription, or paid feature unlock is required.
 
 | Item | Details |
 | --- | --- |
 | First public version | **ver 0.7** |
 | Website | [jvibeschool.org/BIGMOUSE](https://jvibeschool.org/BIGMOUSE/) |
 | GitHub | [jvisualschool/BIGMOUSE](https://github.com/jvisualschool/BIGMOUSE/) |
-| Downloads | Free download from the [v0.7 test release](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7) |
+| Downloads | Free download from the [v0.7 official release](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7) |
 | macOS target | macOS 13 or later |
-| Prepared and tested architecture | Apple Silicon (`arm64`) |
+| Prepared and verified architecture | Apple Silicon (`arm64`) |
 | Interface language | Korean for the South Korea macOS region; English everywhere else |
 | Price | Free |
 
-> **Release information:** Version 0.7 / build 15 is for Apple Silicon. It has an ad hoc signature, with no Developer ID signing, Hardened Runtime, or Apple notarization. macOS may block its first launch. Installation on another Mac, Intel support, and physical macOS 13 testing remain unverified.
+> **Release information:** Version 0.7 / build 15 is for Apple Silicon. It has an ad hoc signature, with no Developer ID signing, Hardened Runtime, or Apple notarization. macOS may block its first launch. Installation on another Mac, Intel support, and physical macOS 13 validation remain unverified.
 
 **[Download the app ZIP](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip)** · [SHA-256](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip.sha256) · [Release notes](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)
 
@@ -83,10 +83,10 @@ Keystroke display starts off each time the app launches. Enable it when needed.
 Check your chip and macOS version in **Apple menu → About This Mac**.
 
 - **Apple Silicon, including M1/M2/M3:** use the `macos-arm64.zip` app package.
-- **Intel:** the arm64 package does not target your Mac. Intel distribution and testing are pending.
+- **Intel:** the arm64 package does not target your Mac. Intel distribution and validation are pending.
 - **Windows, Linux, and iPadOS:** not supported.
 
-Download from the [v0.7 test release](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7). The [BigMouse website](https://jvibeschool.org/BIGMOUSE/#download) links to the same GitHub app ZIP and checksum.
+Download from the [v0.7 official release](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7). The [BigMouse website](https://jvibeschool.org/BIGMOUSE/#download) links to the same GitHub app ZIP and checksum.
 
 | Ver 0.7 file | Purpose |
 | --- | --- |
@@ -120,7 +120,7 @@ The expected result is `BigMouse-0.7-macos-arm64.zip: OK`. If it differs, do not
 
 ### If macOS blocks the app
 
-This test build is not notarized, so macOS may block it. If you have verified the official download and checksum and choose to run it, first try opening the app, then review its entry under **System Settings → Privacy & Security → Open Anyway**. See [Apple’s app-opening guidance](https://support.apple.com/en-us/102445). Stop and report the exact message if macOS instead says the app will damage your computer or is damaged.
+This app is not notarized, so macOS may block it. If you have verified the official download and checksum and choose to run it, first try opening the app, then review its entry under **System Settings → Privacy & Security → Open Anyway**. See [Apple’s app-opening guidance](https://support.apple.com/en-us/102445). Stop and report the exact message if macOS instead says the app will damage your computer or is damaged.
 
 **Developer ID signing and Apple notarization** also apply to direct GitHub/website distribution and are separate from Mac App Store listing. [Apple's macOS distribution guidance](https://developer.apple.com/macos/distribution/)
 
@@ -338,7 +338,7 @@ Updating or rebuilding an ad hoc signed app can leave the old permission entry a
 5. Complete any administrator authentication directly in the macOS dialog.
 6. Use **+** to add the exact app from step 1 and enable it.
 7. Complete **Quit & Reopen**, or launch the app again manually.
-8. Turn on **Enable** and **Show keystrokes on screen**, then test harmless input.
+8. Turn on **Enable** and **Show keystrokes on screen**, then try harmless input.
 
 Use `⌘⇧G` in the file picker to navigate to the app's folder if needed. Verify that keys actually appear, rather than relying only on the permission switch.
 
@@ -423,7 +423,7 @@ bash build.sh
 open dist/BigMouse.app
 ```
 
-The script builds for the host architecture, not a Universal binary. Apple Silicon has been tested. Compilation, resource copying, and signing happen in a fresh staging bundle before replacing the previous output. Local builds are ad hoc signed; **rebuilding may require reconnecting permissions**. Keep a stable execution path and recheck keys/Fn.
+The script builds for the host architecture, not a Universal binary. Apple Silicon has been checked. Compilation, resource copying, and signing happen in a fresh staging bundle before replacing the previous output. Local builds are ad hoc signed; **rebuilding may require reconnecting permissions**. Keep a stable execution path and recheck keys/Fn.
 
 ```sh
 bash test.sh
@@ -431,7 +431,7 @@ codesign --verify --strict dist/BigMouse.app
 bash scripts/package-release.sh
 ```
 
-Overlay tests require a logged-in macOS desktop session. After building the 0.7 source, packaging writes the app ZIP and checksum to `dist/releases/v0.7/`. It rejects unexpected bundle files, symlinks, and overwriting an existing archive. Preserve existing artifacts elsewhere before repackaging the same version.
+Overlay checks require a logged-in macOS desktop session. After building the 0.7 source, packaging writes the app ZIP and checksum to `dist/releases/v0.7/`. It rejects unexpected bundle files, symlinks, and overwriting an existing archive. Preserve existing artifacts elsewhere before repackaging the same version.
 
 Successful signature verification does not establish Developer ID signing or notarization. See the [distribution guide](docs/DISTRIBUTION.md).
 
@@ -452,7 +452,7 @@ Resources/                  Icons, localization, third-party notices
 Tests/                      Behavior checks
 scripts/package-release.sh  ZIP and checksum creation
 build.sh                    Local app build
-test.sh                     Test runner
+test.sh                     Check runner
 docs/                       Distribution, release, and security documentation
 dist/                       Generated apps and packages; Git-ignored
 .build/                     Build cache and temporary files; Git-ignored

@@ -1,21 +1,21 @@
 # Changelog / 변경 기록
 
-## 0.7 — 2026-10-18 / First public test release
+## 0.7 — 2026-10-18 / First official release
 
 - 실제 설정 화면과 3D 아이소메트릭 복셀 히어로를 사용한 한국어·영어 홈페이지 가이드 추가.
 - Add a bilingual website guide with real settings screenshots and a 3D isometric voxel hero.
 - 메뉴 막대에 앱 아이콘 모양을 유지한 흰색 아이콘을 18pt로 표시.
 - Use an 18pt white silhouette of the app icon in the menu bar.
-- 첫 공개 버전은 ver 0.7, 빌드 15로 지정. 아직 공개하지 않음.
-- Set the first public release to version 0.7, build 15. Not published yet.
+- 첫 공식 버전 ver 0.7, 빌드 15 공개.
+- Publish the first official release, version 0.7, build 15.
 - GitHub `jvisualschool/BIGMOUSE`와 `https://jvibeschool.org/BIGMOUSE/`에서 무료 직접 배포. App Store 배포 없음.
 - Free direct distribution through GitHub and the developer website; no Mac App Store release.
 - 한국어·영어 README에 설치·권한·전체 기능·기본값·FAQ·업데이트·삭제 안내 확장.
 - Expanded Korean and English manuals, including permission recovery and troubleshooting.
 - 두 자리 버전 `0.7`과 세 자리 버전을 모두 허용하도록 패키징 검사 조정.
 - Packaging accepts both two-component versions such as `0.7` and three-component versions.
-- 미공증 Apple Silicon 테스트 릴리스. Developer ID 서명·공증과 별도 Mac 신규 설치 검증은 미완료. 아래 0.3.x는 공개 이전 개발 이력.
-- Unnotarized Apple Silicon test release. Developer ID signing, notarization, and fresh installation on another Mac remain pending. The 0.3.x entries below are local development history.
+- Apple Silicon용 공식 릴리스. Developer ID 서명·공증과 별도 Mac 신규 설치 검증은 미완료. 아래 0.3.x는 공개 이전 개발 이력.
+- Official Apple Silicon release. Developer ID signing, notarization, and fresh installation on another Mac remain pending. The 0.3.x entries below are local development history.
 
 ## 0.3.6 — 2026-10-18 (release preparation / 배포 준비)
 
