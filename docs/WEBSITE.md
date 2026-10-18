@@ -19,7 +19,7 @@ The header offers Light mode and Dark mode in both languages. On the first visit
 
 ## Screenshots
 
-The top of the website shows two user-supplied feature captures, before the introductory hero. They sit side by side on desktop and stack on mobile; selecting either opens the existing image dialog. Captions and accessibility labels follow the selected language. These images contain no language-specific text, so both locales share the same assets. The Korean and English READMEs and the v0.7 release notes also show both images at the top.
+The website shows two user-supplied feature captures directly below the shortcut guide and before the installation steps. They sit side by side on desktop and stack on mobile; selecting either opens the existing image dialog. Captions and accessibility labels follow the selected language. These images contain no language-specific text, so both locales share the same assets. The Korean and English READMEs and the v0.7 release notes also show both images at the top.
 
 | File in `website/assets/demos/` | Content | Dimensions | Size |
 | --- | --- | --- | --- |
