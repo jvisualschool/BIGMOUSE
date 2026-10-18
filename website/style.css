@@ -66,6 +66,7 @@
 }
 
 .release-card a.app-download {display:flex;color:#fff;margin-block:16px 12px}
+.faq-section details a {color:var(--blue);text-decoration:underline;text-underline-offset:3px}
 
 /* Keep each shortcut and its example together, in keyboard order. */
 .shortcut-controls {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}

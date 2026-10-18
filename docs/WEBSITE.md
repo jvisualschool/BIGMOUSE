@@ -5,7 +5,7 @@ The public guide lives at <https://jvibeschool.org/BIGMOUSE/>. The standalone st
 ## Content
 
 - Korean and English instructions for installation, permissions, cursor/click effects, keystrokes, spotlight and magnification.
-- Actual BigMouse 0.7 settings captures, image enlargement, a presentation checklist and 11 FAQs.
+- Actual BigMouse 0.7 settings captures, image enlargement, a presentation checklist and 12 FAQs, including optional download file verification.
 - A generated voxel hero; see [image provenance and prompt](HERO-IMAGE.md).
 - Links to the v0.7 GitHub app, checksum, release notes and source repository, with a visible unnotarized-build notice.
 
@@ -58,7 +58,7 @@ Commit locally before publishing. Deploy only the contents of `website/` to the 
 
 Keep `.htaccess` with the upload. It preserves the required `noindex, nofollow` policy, disables directory listings, restricts script/resource origins and denies sensitive file types. Verify HTTPS status, assets, browser console, response security headers and protected paths on the live site. No other project or root server configuration needs to change.
 
-The download area links directly to GitHub v0.7 assets. Keep the release and signing status consistent with the actual release. Verify asset checksums after publication. Use the same version and bytes on the website and GitHub.
+The download area links directly to the GitHub v0.7 app ZIP, release notes and source repository. The SHA-256 link is inside the expandable “Download file verification” FAQ (`#download-verification`), with an explanation in both languages that verification is optional and does not run automatically when the link is opened. Keep the release and signing status consistent with the actual release. Verify asset checksums after publication. Use the same version and bytes on the website and GitHub.
 
 ## Verified deployment — 2026-10-18
 
@@ -78,4 +78,4 @@ The normal spotlight/zoom settings image was refreshed after recovery. The separ
 
 ## GitHub official release — 2026-10-18
 
-The download section now links to the v0.7 Apple Silicon app, SHA-256 file, release notes and public source repository. Korean and English copy explicitly states the lack of Developer ID signing and Apple notarization. Installation on another Mac remains unverified. The earlier pending-download descriptions above record the initial guide publication state.
+The download section links to the v0.7 Apple Silicon app, release notes and public source repository; the SHA-256 file is linked from the download verification FAQ. Korean and English copy explicitly states the lack of Developer ID signing and Apple notarization. Installation on another Mac remains unverified. The earlier pending-download descriptions above record the initial guide publication state.
