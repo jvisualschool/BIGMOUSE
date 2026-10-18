@@ -1,0 +1,12 @@
+Options -Indexes
+DirectoryIndex index.html
+<IfModule mod_headers.c>
+    Header always set X-Robots-Tag "noindex, nofollow"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+<FilesMatch "(?i)(^\.|\.(?:sh|py|toml|ya?ml|env|log|bak|pem|key)$)">
+    Require all denied
+</FilesMatch>

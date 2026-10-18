@@ -1,0 +1,2 @@
+# Keep machine-specific work notes out of source release archives.
+/docs/work-logs export-ignore

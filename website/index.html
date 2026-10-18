@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="BigMouse — 무료 macOS 커서 강조·클릭 효과·스포트라이트·확대·키 입력 표시 도구. 실제 화면으로 따라 하는 사용 가이드.">
+<meta name="theme-color" content="#f7f9fe">
+<script src="theme.js"></script>
+<title>BigMouse — 화면으로 따라 하는 사용 가이드</title>
+<link rel="icon" type="image/png" href="assets/app-icon.png">
+<link rel="stylesheet" href="style.css"><script src="content.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#guide" data-t="skip">사용 가이드로 바로 가기</a>
+<header class="header"><div class="nav wrap">
+<a class="brand" href="#top" aria-label="BigMouse home"><img src="assets/app-icon.png" alt="" width="34" height="34"><span>BigMouse</span></a>
+<nav aria-label="Main"><a href="#guide" data-t="navGuide">사용 가이드</a><a href="#permissions" data-t="navPermissions">권한 설정</a><a href="#faq">FAQ</a></nav>
+<div class="theme-switch" role="group" aria-label="화면 모드" data-aria="themeLabel"><button type="button" data-theme-choice="light" aria-pressed="true" data-t="lightMode">라이트 모드</button><button type="button" data-theme-choice="dark" aria-pressed="false" data-t="darkMode">다크 모드</button></div>
+<div class="languages" role="group" aria-label="Language"><button type="button" data-lang="ko" aria-pressed="true">한국어</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+</div></header>
+<main id="top">
+<section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy">
+<p class="eyebrow"><span class="dot"></span><span data-t="badge">macOS · 무료 · ver 0.7 테스트 버전</span></p>
+<h1 id="hero-title"><span data-t="hero1">커서와 키 입력을</span><br><span class="blue" data-t="hero2">크고 또렷하게.</span></h1>
+<p class="hero-description" data-t="heroDescription">어디를 가리키고, 무엇을 눌렀는지. 강의와 화면 시연을 함께 따라오기 쉽게 만들어 주세요.</p>
+<div class="actions"><a class="button primary" href="#guide"><span data-t="guideButton">사용 가이드 보기</span><span aria-hidden="true">↘</span></a><a class="button secondary" href="#download" data-t="releaseButton">다운로드</a></div>
+<p class="hero-meta" data-t="heroMeta">Apple Silicon · macOS 13 이상 대상 · 한국어 / English</p>
+</div><div class="hero-art"><img src="assets/illustrations/bigmouse-hero-voxel.png" width="1672" height="941" alt="파란 커서, 돋보기, 키보드와 귀여운 마우스의 3D 복셀 일러스트" data-alt="heroAlt" fetchpriority="high"></div></section>
+<section class="shortcuts wrap" aria-label="Quick controls"><div><span class="shortcut-label" data-t="spotlight">스포트라이트</span><kbd>⌃ Control</kbd><span data-t="hold">누르는 동안</span></div><div><span class="shortcut-label" data-t="zoom">돋보기 확대</span><kbd>Fn</kbd><span data-t="hold">누르는 동안</span></div><div><span class="shortcut-label" data-t="keys">키 입력 표시</span><kbd>⌥ Option × 2</kbd><span data-t="doubleTap">짧게 두 번, 켜기·끄기</span></div></section>
+<section class="section wrap" id="guide"><div class="section-title"><p class="eyebrow">GET STARTED</p><h2 data-t="startTitle">처음이라면, 이 순서로.</h2><p data-t="startDescription">한 번 설치하고 권한을 설정하면, 메뉴 막대에서 바로 사용할 수 있어요.</p></div><ol class="start-grid" id="start-steps"></ol></section>
+<section class="guide-area" id="features"><div class="wrap"><div class="section-title"><p class="eyebrow">VISUAL GUIDE</p><h2 data-t="featuresTitle">설정 화면을 보며 따라 해 보세요.</h2><p data-t="screenshotsNote">실제 BigMouse의 한국어 설정 화면입니다. 이미지를 누르면 크게 볼 수 있어요.</p></div><div id="feature-guides"></div></div></section>
+<section class="section wrap" id="permissions"><div class="section-title"><p class="eyebrow">PERMISSIONS</p><h2 data-t="permissionTitle">필요한 기능에만 권한을 주세요.</h2><p data-t="permissionDescription">키 입력 표시와 확대는 서로 다른 권한을 사용합니다. 커서 강조·클릭 효과·스포트라이트에는 이 두 권한이 필요하지 않아요.</p></div><div class="permission-grid" id="permission-guides"></div><div class="notice"><span aria-hidden="true">ⓘ</span><p data-t="permissionNote">권한 이름에 ‘오디오’가 들어 있어도 BigMouse는 오디오를 캡처하지 않습니다. 확대 화면과 키 입력을 파일에 저장하거나 전송하지 않습니다.</p></div></section>
+<section class="trouble-section" id="troubleshooting"><div class="wrap trouble-layout"><div><p class="eyebrow">TROUBLESHOOTING</p><h2 data-t="troubleTitle">권한은 켜져 있는데<br>작동하지 않나요?</h2><p data-t="troubleIntro">앱을 업데이트하거나 다른 위치에서 실행하면 macOS 권한이 이전 앱을 가리킬 수 있어요. 실제 사용할 앱으로 다시 연결해 주세요.</p><ol class="numbered" id="repair-steps"></ol><p class="small" data-t="authNote">관리자 인증은 macOS 창에서 직접 진행하세요. 암호를 채팅이나 문의 글로 보내지 마세요.</p></div><figure class="trouble-image"><button type="button" class="screenshot-button" data-image="assets/screenshots/zoom-permission-needed.png" data-caption="permissionCaption" aria-label="권한 안내 화면 크게 보기" data-aria="permissionImageLabel"><img src="assets/screenshots/zoom-permission-needed.png" width="1000" height="1644" loading="lazy" alt="줌 설정에 화면 기록 권한 안내가 표시된 실제 화면" data-alt="permissionAlt"></button><figcaption data-t="permissionCaption">이 안내가 보이면 화면 기록 권한을 확인하고 앱을 다시 실행하세요.</figcaption></figure></div></section>
+<section class="section wrap" id="presentation"><div class="presentation-panel"><div><p class="eyebrow">BEFORE YOU PRESENT</p><h2 data-t="presentationTitle">발표 전에 30초만 확인하세요.</h2></div><ul id="presentation-checks"></ul></div></section>
+<section class="section wrap faq-section" id="faq"><div class="section-title"><p class="eyebrow">FAQ</p><h2 data-t="faqTitle">자주 묻는 질문</h2></div><div id="faq-list"></div></section>
+<section class="download-section" id="download"><div class="wrap download-layout"><div><p class="eyebrow">FREE FOR EVERYONE</p><h2 data-t="downloadTitle">BigMouse ver 0.7</h2><p data-t="downloadDescription">Apple Silicon용 첫 무료 테스트 버전입니다. 아래 버튼에서 앱 ZIP을 받고, 체크섬을 확인한 뒤 응용 프로그램 폴더로 옮겨 주세요.</p><p class="small" data-t="downloadDetail">Apple 서명·공증이 없는 테스트 앱이므로 macOS가 실행을 차단할 수 있습니다. 자세한 내용은 릴리스 노트를 읽어 주세요.</p></div><div class="release-card"><span class="status-badge" data-t="releaseStatus">미공증 테스트 버전 · Apple Silicon</span><p data-t="releaseWhere">공식 다운로드와 소스</p><a class="button primary app-download" href="https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip" data-t="downloadApp">테스트 앱 다운로드</a><a href="https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip.sha256" data-t="checksum">SHA-256 확인</a><a href="https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7" data-t="releaseNotes">릴리스 노트</a><a href="https://github.com/jvisualschool/BIGMOUSE/">github.com/jvisualschool/BIGMOUSE</a><p class="small" data-t="githubStatus">앱·소스·체크섬을 GitHub에서 함께 제공합니다. Intel용 배포와 별도 Mac 신규 설치 검증은 미완료입니다.</p></div></div></section>
+</main>
+<footer class="wrap footer"><a class="brand" href="#top"><img src="assets/app-icon.png" alt="" width="26" height="26"><span>BigMouse</span></a><p data-t="footer">무료 macOS 발표 도구 · 계정 없이, 인터넷 없이 사용</p><a href="README.md" download data-t="readme">상세 README</a></footer>
+<dialog id="image-dialog" aria-labelledby="image-caption"><button id="close-image" class="close-image" type="button" aria-label="이미지 닫기" data-aria="closeImage">×</button><img id="expanded-image" alt=""><p id="image-caption"></p></dialog>
+<noscript><p class="wrap">이미지 가이드의 전체 내용과 언어 선택을 사용하려면 JavaScript를 켜 주세요. <a href="README.md">상세 사용 설명서</a>도 읽을 수 있습니다.</p></noscript>
+</body></html>

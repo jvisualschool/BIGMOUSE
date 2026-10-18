@@ -1,0 +1,11 @@
+.build/
+dist/
+.DS_Store
+.env
+.env.*
+*.p12
+*.pfx
+*.pem
+*.key
+/docs/work-logs/
+
