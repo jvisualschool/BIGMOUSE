@@ -19,7 +19,7 @@ The header offers Light mode and Dark mode in both languages. On the first visit
 
 ## Screenshots
 
-All screenshots are 1000 × 1644 pixel native app window captures, not recreated mockups.
+Korean screenshots are 1000 × 1644 pixels; English screenshots are 1120 × 1644 pixels because the English settings window is wider. They are native window captures, not images with translated text painted over them.
 
 | File in `website/assets/screenshots/` | Content |
 | --- | --- |
@@ -28,7 +28,9 @@ All screenshots are 1000 × 1644 pixel native app window captures, not recreated
 | `settings-spotlight-zoom.png` | Spotlight and zoom controls after successful permission reconnection |
 | `zoom-permission-needed.png` | The actual screen-recording permission warning for troubleshooting |
 
-The key font size was restored to the user's saved 98pt after capture. Screenshots show the Korean interface in both guide languages; English captions explain the controls. Permission UI captures do not establish that the magnifier works. Verify an actual screen frame after permission changes.
+Korean files remain at the paths above. English counterparts use the same base names with a `.jpg` extension under `website/assets/screenshots/en/`. The selected page language determines all three feature images and the troubleshooting image, including their enlarged views, alt text and captions.
+
+The original Korean capture restored the user’s key font size to 98pt afterward. English images were captured from the current production `SettingsView` and translation resources in a separate documentation preview, with an app-specific `en_US` locale and 28pt key preview. This preview starts no overlay, keystroke monitor or screen-capture session, and its ungranted permissions appear naturally in the screenshots. The spotlight/zoom capture also supplies the English permission-warning example. It does not change the running app, its preferences or permissions. Permission UI captures do not establish that the magnifier works.
 
 ## Editing and preview
 
@@ -38,7 +40,7 @@ Edit `index.html` for structure, `style.css` for layout, `content.js` for transl
 python3 -m http.server 8732 --bind 127.0.0.1 --directory website
 ```
 
-Open `http://127.0.0.1:8732/`. Keep the two downloadable README copies synchronized with the repository roots before deploying. Check desktop and mobile layouts (including horizontal overflow against `document.documentElement.clientWidth`), both languages and color modes, system-theme changes before a manual choice, saved-theme persistence after reload, every image, the image dialog including Escape/focus restoration, FAQs, and the download status.
+Open `http://127.0.0.1:8732/`. Keep the two downloadable README copies synchronized with the repository roots before deploying. Check desktop and mobile layouts (including horizontal overflow against `document.documentElement.clientWidth`), both languages and color modes, image-language switching and enlarged images after reload, system-theme changes before a manual choice, saved-theme persistence after reload, every image, the image dialog including Escape/focus restoration, FAQs, and the download status.
 
 ## Deploying
 

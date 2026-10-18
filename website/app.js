@@ -6,6 +6,12 @@
     const stored = localStorage.getItem('bigmouse-guide-language');
     language = ['ko','en'].includes(stored) ? stored : (new Intl.Locale(navigator.language).region === 'KR' ? 'ko' : 'en');
   } catch { language = /[-_]KR\b/i.test(navigator.language || '') ? 'ko' : 'en'; }
+  const screenshotPath = filename => 'assets/screenshots/' + (language === 'en' ? 'en/' + filename.replace(/\.png$/, '.jpg') : filename);
+  function setScreenshot(image, filename) {
+    image.src = screenshotPath(filename);
+    image.width = language === 'en' ? 1120 : 1000;
+    image.height = 1644;
+  }
   const el = (tag, className, text) => {
     const node = document.createElement(tag);
     if(className) node.className = className;
@@ -55,7 +61,7 @@
       text.append(el('p','feature-number',f.number),el('h3','',f.title),el('p','feature-summary',f.summary),list(f.steps,'numbered'),el('p','feature-tip',f.tip));
       const figure=el('figure');
       const button=el('button','screenshot-button'); button.type='button'; button.setAttribute('aria-label',t.expand+': '+f.title);
-      const image=el('img'); image.src='assets/screenshots/'+f.image; image.alt=f.alt; image.width=1000; image.height=1644; image.loading='lazy';
+      const image=el('img'); setScreenshot(image,f.image); image.alt=f.alt; image.loading='lazy';
       button.append(image); button.addEventListener('click',()=>openImage(image.src,f.caption,button));
       figure.append(button,el('figcaption','',f.caption)); article.append(text,figure); guides.append(article);
     });
@@ -67,7 +73,11 @@
     const checks=$('#presentation-checks'); checks.replaceChildren(); t.checks.forEach(text=>checks.append(el('li','',text)));
     const faqs=$('#faq-list'); faqs.replaceChildren();
     t.faq.forEach(([q,a])=>{const item=el('details');item.append(el('summary','',q),el('p','',a));faqs.append(item);});
-    document.querySelectorAll('[data-image]').forEach(button=>button.onclick=()=>openImage(button.dataset.image,t[button.dataset.caption],button));
+    document.querySelectorAll('[data-screenshot]').forEach(button => {
+      const image = button.querySelector('img');
+      setScreenshot(image, button.dataset.screenshot);
+      button.onclick = () => openImage(image.src, t[button.dataset.caption], button);
+    });
     document.querySelector('.footer>a:last-child').href=language==='ko'?'README.md':'README.en.md';
   }
   document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{
