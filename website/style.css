@@ -66,3 +66,13 @@
 }
 
 .release-card a.app-download {display:flex;color:#fff;margin-block:16px 12px}
+
+.demo-gallery {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-block:30px 12px}
+.demo-gallery figure {min-width:0;margin:0}
+.demo-button {display:block;width:100%;padding:0;border:0;border-radius:var(--radius);background:transparent;cursor:zoom-in}
+.demo-button img {width:100%;height:auto}
+.demo-gallery figcaption {margin-top:0;font-size:14px;font-weight:650;color:var(--ink)}
+@media (max-width:640px) {
+  .demo-gallery {grid-template-columns:1fr;gap:22px;padding-block:20px 12px}
+  .demo-gallery figcaption {font-size:13px}
+}

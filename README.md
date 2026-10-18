@@ -2,6 +2,10 @@
 
 [한국어](README.md) · [English](README.en.md)
 
+| 돋보기 확대 · Fn | 스포트라이트 · Control |
+| --- | --- |
+| ![돋보기 확대 · Fn](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/zoom.webp) | ![스포트라이트 · Control](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/spotlight.webp) |
+
 <img src="Resources/AppIcon.png" width="96" alt="BigMouse 아이콘">
 
 **마우스 위치, 클릭, 키 입력을 화면에 보여 주는 무료 macOS 발표 도구입니다.**

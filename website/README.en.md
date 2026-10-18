@@ -2,6 +2,10 @@
 
 [한국어](README.md) · [English](README.en.md)
 
+| Magnifier · Fn | Spotlight · Control |
+| --- | --- |
+| ![Magnifier · Fn](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/zoom.webp) | ![Spotlight · Control](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/spotlight.webp) |
+
 <img src="Resources/AppIcon.png" width="96" alt="BigMouse icon">
 
 **A free macOS presentation tool that makes your pointer, clicks, and keystrokes visible.**

@@ -78,6 +78,9 @@
       setScreenshot(image, button.dataset.screenshot);
       button.onclick = () => openImage(image.src, t[button.dataset.caption], button);
     });
+    document.querySelectorAll('[data-demo]').forEach(button => {
+      button.onclick = () => openImage(button.querySelector('img').src,t[button.dataset.caption],button);
+    });
     document.querySelector('.footer>a:last-child').href=language==='ko'?'README.md':'README.en.md';
   }
   document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{

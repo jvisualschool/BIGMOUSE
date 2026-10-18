@@ -19,6 +19,15 @@ The header offers Light mode and Dark mode in both languages. On the first visit
 
 ## Screenshots
 
+The top of the website shows two user-supplied feature captures, before the introductory hero. They sit side by side on desktop and stack on mobile; selecting either opens the existing image dialog. Captions and accessibility labels follow the selected language. These images contain no language-specific text, so both locales share the same assets. The Korean and English READMEs and the v0.7 release notes also show both images at the top.
+
+| File in `website/assets/demos/` | Content | Dimensions | Size |
+| --- | --- | --- | --- |
+| `zoom.webp` | Magnifier around the pointer | 1440 × 966 | 90,446 bytes |
+| `spotlight.webp` | Spotlight around the pointer | 1440 × 966 | 76,444 bytes |
+
+The supplied 1826 × 1224 PNGs were resized and encoded using `cwebp -resize 1440 0 -q 85 -alpha_q 100 -m 6 -sharp_yuv -metadata none`. The WebP encoder rounds the proportional output height to 966 pixels. Transparency is preserved, and the original files remain unchanged. The two deployed images total 166,890 bytes. GitHub embeds use the public repository's raw WebP URLs.
+
 Korean screenshots are 1000 × 1644 pixels; English screenshots are 1120 × 1644 pixels because the English settings window is wider. They are native window captures, not images with translated text painted over them.
 
 | File in `website/assets/screenshots/` | Content |
