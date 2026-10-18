@@ -19,14 +19,15 @@ The header offers Light mode and Dark mode in both languages. On the first visit
 
 ## Screenshots
 
-The shortcut guide contains two user-supplied feature captures below its three controls, inside the same panel and before the installation steps. They sit side by side on desktop and stack on mobile; selecting either opens the existing image dialog. Captions and accessibility labels follow the selected language. These images contain no language-specific text, so both locales share the same assets. The Korean and English READMEs and the v0.7 release notes also show both images at the top.
+The shortcut guide pairs three user-supplied feature captures with their controls, inside the same panel and before the installation steps. They follow keyboard order: Fn (magnifier), Control (spotlight), then Option (keystrokes). Each image appears below its own shortcut; the three columns stack on mobile. Selecting an image opens the existing image dialog. Captions and accessibility labels follow the selected language. The images use shared artwork and key labels, so both locales share the same assets. The Korean and English READMEs and the v0.7 release notes show the three images in the same order at the top.
 
 | File in `website/assets/demos/` | Content | Dimensions | Size |
 | --- | --- | --- | --- |
 | `zoom.webp` | Magnifier around the pointer | 1440 × 966 | 90,446 bytes |
 | `spotlight.webp` | Spotlight around the pointer | 1440 × 966 | 76,444 bytes |
+| `keystrokes.webp` | Large on-screen labels for pressed keys | 1440 × 837 | 45,576 bytes |
 
-The supplied 1826 × 1224 PNGs were resized and encoded using `cwebp -resize 1440 0 -q 85 -alpha_q 100 -m 6 -sharp_yuv -metadata none`. The WebP encoder rounds the proportional output height to 966 pixels. Transparency is preserved, and the original files remain unchanged. The two deployed images total 166,890 bytes. GitHub embeds use the public repository's raw WebP URLs.
+The supplied PNGs (1826 × 1224 for magnifier/spotlight and 1636 × 950 for keystrokes) were resized and encoded using `cwebp -resize 1440 0 -q 85 -alpha_q 100 -m 6 -sharp_yuv -metadata none`. The encoder chooses the proportional output height. Transparency is preserved where present, and the original files remain unchanged. The three deployed images total 212,466 bytes. GitHub embeds use the public repository's raw WebP URLs.
 
 Korean screenshots are 1000 × 1644 pixels; English screenshots are 1120 × 1644 pixels because the English settings window is wider. They are native window captures, not images with translated text painted over them.
 

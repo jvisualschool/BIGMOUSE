@@ -2,9 +2,9 @@
 
 [한국어](README.md) · [English](README.en.md)
 
-| Magnifier · Fn | Spotlight · Control |
-| --- | --- |
-| ![Magnifier · Fn](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/zoom.webp) | ![Spotlight · Control](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/spotlight.webp) |
+| Magnifier · Fn | Spotlight · Control | Keystrokes · Option × 2 |
+| --- | --- | --- |
+| ![Magnifier · Fn](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/zoom.webp) | ![Spotlight · Control](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/spotlight.webp) | ![Keystrokes · Option × 2](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/keystrokes.webp) |
 
 <img src="Resources/AppIcon.png" width="96" alt="BigMouse icon">
 

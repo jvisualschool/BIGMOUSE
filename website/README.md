@@ -2,9 +2,9 @@
 
 [한국어](README.md) · [English](README.en.md)
 
-| 돋보기 확대 · Fn | 스포트라이트 · Control |
-| --- | --- |
-| ![돋보기 확대 · Fn](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/zoom.webp) | ![스포트라이트 · Control](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/spotlight.webp) |
+| 돋보기 확대 · Fn | 스포트라이트 · Control | 키 입력 표시 · Option × 2 |
+| --- | --- | --- |
+| ![돋보기 확대 · Fn](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/zoom.webp) | ![스포트라이트 · Control](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/spotlight.webp) | ![키 입력 표시 · Option × 2](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/keystrokes.webp) |
 
 <img src="Resources/AppIcon.png" width="96" alt="BigMouse 아이콘">
 
