@@ -2,9 +2,10 @@ import AppKit
 import Carbon
 import Combine
 
-/// Recognizes two short, unmodified Option press/release pairs.
+/// Recognizes two short press/release pairs of the selected modifier combination.
 /// Event counts cancel shortcuts without reading or retaining their characters.
-struct OptionDoubleTap {
+struct ModifierDoubleTap {
+    var modifiers: NSEvent.ModifierFlags = .option
     private var wasDown = false
     private var pressedAt: TimeInterval?
     private var releasedAt: TimeInterval?
@@ -13,8 +14,8 @@ struct OptionDoubleTap {
     @discardableResult
     mutating func update(flags: NSEvent.ModifierFlags, at time: TimeInterval,
                          inputCount currentCount: UInt32, mouseDown: Bool = false) -> Bool {
-        let down = flags.contains(.option)
-        let otherModifier = !flags.intersection([.command, .control, .shift, .function]).isEmpty
+        let down = !modifiers.isEmpty && flags.isSuperset(of: modifiers)
+        let otherModifier = !flags.intersection(ShortcutBinding.modifierMask).subtracting(modifiers).isEmpty
         let interveningInput = inputCount.map { $0 != currentCount } ?? false
         inputCount = currentCount
         if otherModifier || interveningInput || mouseDown {
@@ -71,8 +72,25 @@ final class KeystrokeMonitor: ObservableObject {
     var onPermissionNeeded: (() -> Void)?
     private var tap: CFMachPort?
     private var source: CFRunLoopSource?
-    private var gesture = OptionDoubleTap()
+    let shortcuts: ShortcutController
     private var buffer = KeyReadoutBuffer()
+    private var filter: KeyDisplayFilter
+    private var includeSpecialKeys: Bool
+    private var filterSubscription: AnyCancellable?
+
+    init(preferences: Preferences) {
+        shortcuts = ShortcutController(preferences: preferences)
+        filter = preferences.keyDisplayFilter
+        includeSpecialKeys = preferences.keyIncludeSpecialKeys
+        shortcuts.onToggleKeys = { [weak self] in self?.toggle() }
+        filterSubscription = Publishers.CombineLatest(preferences.$keyDisplayFilter, preferences.$keyIncludeSpecialKeys)
+            .sink { [weak self] filter, includeSpecialKeys in
+                guard let self, self.filter != filter || self.includeSpecialKeys != includeSpecialKeys else { return }
+                self.filter = filter
+                self.includeSpecialKeys = includeSpecialKeys
+                self.buffer.clear()
+            }
+    }
 
     func refreshPermission() {
         let granted = CGPreflightListenEventAccess()
@@ -135,27 +153,27 @@ final class KeystrokeMonitor: ObservableObject {
     }
 
     func poll(flags: NSEvent.ModifierFlags, at time: TimeInterval) -> KeyReadout {
-        // Counting events detects intervening typing/clicks, even between timer ticks.
-        let activity = CGEventSource.counterForEventType(.combinedSessionState, eventType: .keyDown)
-            &+ CGEventSource.counterForEventType(.combinedSessionState, eventType: .leftMouseDown)
-            &+ CGEventSource.counterForEventType(.combinedSessionState, eventType: .rightMouseDown)
-        if gesture.update(flags: flags, at: time, inputCount: activity,
-                          mouseDown: NSEvent.pressedMouseButtons != 0) { toggle() }
-        guard isEnabled, !IsSecureEventInputEnabled() else { buffer.clear(); return KeyReadout() }
+        shortcuts.poll(flags: flags, at: time)
+        guard isEnabled, !shortcuts.isRecording, !IsSecureEventInputEnabled() else { buffer.clear(); return KeyReadout() }
         return buffer.readout(at: time)
     }
 
     private func receive(_ event: CGEvent) {
-        guard isEnabled, !IsSecureEventInputEnabled(), let key = NSEvent(cgEvent: event) else {
+        guard isEnabled, !shortcuts.isRecording, !IsSecureEventInputEnabled(), let key = NSEvent(cgEvent: event) else {
             buffer.clear()
             return
         }
-        guard let label = Self.label(keyCode: key.keyCode, characters: key.charactersIgnoringModifiers,
-                                     flags: key.modifierFlags) else { return }
+        guard let label = label(for: key) else { return }
         buffer.append(label, at: ProcessInfo.processInfo.systemUptime)
     }
 
-    static func label(keyCode: UInt16, characters: String?, flags: NSEvent.ModifierFlags) -> String? {
+    func label(for key: NSEvent) -> String? {
+        Self.label(keyCode: key.keyCode, characters: key.charactersIgnoringModifiers,
+                   flags: key.modifierFlags, filter: filter, includeSpecialKeys: includeSpecialKeys)
+    }
+
+    static func label(keyCode: UInt16, characters: String?, flags: NSEvent.ModifierFlags,
+                      filter: KeyDisplayFilter = .allKeys, includeSpecialKeys: Bool = true) -> String? {
         let names: [UInt16: String] = [
             36: "↩", 48: "⇥", 49: "Space", 51: "⌫", 53: "Esc", 76: "⌤", 117: "⌦",
             123: "←", 124: "→", 125: "↓", 126: "↑", 115: "Home", 119: "End", 116: "Pg↑", 121: "Pg↓",
@@ -163,6 +181,11 @@ final class KeystrokeMonitor: ObservableObject {
             101: "F9", 109: "F10", 103: "F11", 111: "F12", 105: "F13", 107: "F14", 113: "F15",
             106: "F16", 64: "F17", 79: "F18", 80: "F19", 90: "F20"
         ]
+        let isShortcut = !flags.intersection([.command, .control, .option]).isEmpty
+        // Shift/Caps Lock/Fn alone do not make typing a shortcut. In particular,
+        // arrow/function keys can carry the Fn flag without Fn being held.
+        let isSpecialKey = keyCode != 49 && names[keyCode] != nil
+        guard filter == .allKeys || isShortcut || (includeSpecialKeys && isSpecialKey) else { return nil }
         let printable = characters?.unicodeScalars.filter {
             !CharacterSet.controlCharacters.contains($0) && !CharacterSet.illegalCharacters.contains($0)
         }.map(String.init).joined()
@@ -175,7 +198,17 @@ final class KeystrokeMonitor: ObservableObject {
             39: "'", 40: "K", 41: ";", 42: "\\", 43: ",", 44: "/", 45: "N", 46: "M", 47: ".", 50: "`"
         ]
         let visible = printable.flatMap { $0.isEmpty ? nil : $0 }
-        guard let base = names[keyCode] ?? visible ?? fallback[keyCode], !base.isEmpty else { return nil }
+        // Normalize only Hangul shortcut labels by physical key, never the input
+        // source or the original event. Keep other keyboard layouts unchanged.
+        let hasHangul = visible?.unicodeScalars.contains { scalar in
+            switch scalar.value {
+            case 0x1100...0x11FF, 0x3130...0x318F, 0xA960...0xA97F, 0xAC00...0xD7AF, 0xD7B0...0xD7FF:
+                return true
+            default: return false
+            }
+        } ?? false
+        let shortcutKey = isShortcut && hasHangul ? fallback[keyCode] : nil
+        guard let base = names[keyCode] ?? shortcutKey ?? visible ?? fallback[keyCode], !base.isEmpty else { return nil }
         var prefix = ""
         if flags.contains(.control) { prefix += "⌃" }
         if flags.contains(.option) { prefix += "⌥" }
@@ -187,7 +220,7 @@ final class KeystrokeMonitor: ObservableObject {
     func suspend() {
         setEnabled(false)
         buffer.clear()
-        gesture = OptionDoubleTap()
+        shortcuts.resetState()
     }
 
     private func stopListening() {

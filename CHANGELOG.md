@@ -1,5 +1,18 @@
 # Changelog / 변경 기록
 
+## 0.8 — 2026-10-19
+
+- 확대·스포트라이트·키 표시의 단축키를 각각 지정합니다. 중복·시스템 예약 검사와 기본값 복원을 제공합니다. / Assign shortcuts independently, with conflict checks and restore defaults.
+- 전용 고정 서명으로 업데이트 간 앱 식별을 유지합니다. 이전 임시 서명에서 전환 시 한 번 재허용이 필요합니다. / Keep app identity across updates with a dedicated certificate; migration from an ad hoc build requires one permission grant.
+- 확대 권한 오류와 복구 안내를 설정창 맨 위에 표시합니다. / Keep zoom permission errors and recovery steps visible above the settings form.
+- 홈페이지에서 최신 버전과 한국어·영어 개선 로그를 제공합니다. / Show the latest version and bilingual release history on the website.
+
+- 설정창 맨 아래에 앱 버전을 한국어·영어로 표시합니다. / Show the app version at the bottom of Settings in both languages.
+
+- 한글 입력 상태의 Command·Control·Option 조합을 영문 키로 표시합니다. 실제 입력은 바꾸지 않습니다. / Show English key labels for Hangul shortcuts without modifying input.
+- ‘단축키만 / 모든 키’와 ‘특수키도 표시’ 선택을 추가했습니다. Shift만 사용한 문자 입력과 일반 Space는 단축키에서 제외합니다. / Add shortcut filtering with optional special keys.
+- 새 설치는 단축키만 표시하고 기존 설치는 모든 키 표시를 유지합니다. 선택은 저장되며 즉시 적용됩니다. / Default to shortcuts on new installs; preserve all-key behavior on upgrades.
+
 ## 0.7 — 2026-10-18 / First official release
 
 - 실제 설정 화면과 3D 아이소메트릭 복셀 히어로를 사용한 한국어·영어 홈페이지 가이드 추가.

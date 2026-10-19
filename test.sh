@@ -7,7 +7,7 @@ cp -R Resources/en.lproj Resources/ko.lproj .build/tests/
 xcrun swiftc -Osize -whole-module-optimization -swift-version 5 -target "$(uname -m)-apple-macosx13.0" \
   -module-cache-path "$PWD/.build/module-cache" \
   -framework AppKit -framework SwiftUI -framework QuartzCore -framework ScreenCaptureKit -framework CoreImage \
-  Sources/Localization.swift Sources/Preferences.swift Sources/Overlay.swift Sources/ZoomCapture.swift Sources/EffectTransition.swift Sources/KeystrokeMonitor.swift Sources/KeyDisplay.swift .build/tests/main.swift \
+  Sources/Shortcuts.swift Sources/Localization.swift Sources/Preferences.swift Sources/Overlay.swift Sources/ZoomCapture.swift Sources/EffectTransition.swift Sources/KeystrokeMonitor.swift Sources/KeyDisplay.swift .build/tests/main.swift \
   -o .build/tests/SmokeTests
 xcrun strip -S -x .build/tests/SmokeTests
 .build/tests/SmokeTests

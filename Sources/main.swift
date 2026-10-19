@@ -5,7 +5,7 @@ import SwiftUI
 final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     let preferences = Preferences()
     let zoom = ZoomCapture()
-    let keys = KeystrokeMonitor()
+    lazy var keys = KeystrokeMonitor(preferences: preferences)
     var overlay: OverlayController!
     var statusItem: NSStatusItem!
     var settingsWindow: NSWindow?
@@ -75,10 +75,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         addItem(menu, title: preferences.enabled ? L10n.text(.pause) : L10n.text(.resume), action: #selector(toggleEnabled))
         addItem(menu, title: L10n.text(.cursorHighlight), action: #selector(toggleHalo), checked: preferences.haloEnabled)
         addItem(menu, title: L10n.text(.clickEffects), action: #selector(toggleClicks), checked: preferences.clicksEnabled)
-        addItem(menu, title: L10n.text(.keysMenu), action: #selector(toggleKeys), checked: keys.isEnabled)
+        addItem(menu, title: ShortcutAction.keys.title + " · " + preferences.shortcuts.keys.instruction(for: .keys), action: #selector(toggleKeys), checked: keys.isEnabled)
         addItem(menu, title: L10n.text(.spotlight), action: #selector(toggleSpotlight), checked: preferences.spotlightEnabled)
-        addItem(menu, title: L10n.text(.zoom), action: #selector(toggleZoom), checked: preferences.zoomEnabled)
-        let shortcut = NSMenuItem(title: L10n.spotlightShortcut(preferences.shortcut.title), action: nil, keyEquivalent: "")
+        addItem(menu, title: L10n.text(.zoom) + " · " + preferences.shortcuts.zoom.instruction(for: .zoom), action: #selector(toggleZoom), checked: preferences.zoomEnabled)
+        let shortcut = NSMenuItem(title: ShortcutAction.spotlight.title + ": " + preferences.shortcuts.spotlight.instruction(for: .spotlight), action: nil, keyEquivalent: "")
         menu.addItem(shortcut)
         menu.addItem(.separator())
         addItem(menu, title: L10n.text(.settings), action: #selector(showSettings), key: ",")

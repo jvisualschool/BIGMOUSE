@@ -1,0 +1,18 @@
+Generated with the built-in image_gen tool on 2026-10-18.
+Purpose: BigMouse coffee support artwork. Prepared locally; not uploaded to Latpeed or deployed.
+Reference: the existing BigMouse hero supplied by the user.
+
+Use case: style-transfer
+Asset type: 1:1 square BigMouse coffee-support illustration.
+Input images:
+Image 1 is the current coffee illustration, an edit target. Preserve its idea of a delighted computer mouse being offered a cup of coffee, but completely transform its visual style.
+Image 2 is the user's existing BigMouse hero artwork, the primary visual style and mascot identity reference. Match this reference closely.
+
+Create a new polished SQUARE 1:1 composition that feels like an authentic companion to Image 2. Cute premium 3D isometric voxel / three-dimensional pixel-art diorama. Use the exact visual language of the hero: sculpted block-stepped cream/off-white surfaces, vivid cobalt and sky-blue accents, small yellow accents, softly rounded block edges, pristine toy-like materials and soft studio ambient shadows. Orthographic isometric view, consistent scale, no perspective distortion. Do NOT use the flat 2D sprite style of Image 1.
+
+Hero subject: the adorable cream-white COMPUTER MOUSE at the lower right of Image 2, clearly recognizable with its blue scroll wheel, blue side panel, black square eyes, small smiling black pixel mouth, pink square cheeks and short blue looping cable. Make this recognizable mouse the large central character. Do not turn it into a round upright robot or animal.
+Action: a simple stylized voxel hand offers a beautiful blue-and-cream coffee cup on a small cream saucer toward the happy mouse. A small matching block arm on the mouse welcomes the treat. The cup contains dark warm coffee and has charming block-shaped steam curling upward into a little heart. Mouse and coffee are the visual focus.
+Context: a compact partial cream-and-blue keyboard and a small upright blue pixel cursor behind the mouse tie the scene to the BigMouse brand. Keep them secondary; avoid a large busy monitor or adding unrelated objects. No realistic cafe, plants, notebooks or detailed room.
+Composition: generously framed square studio diorama, everything comfortably inside the canvas, no cropped cup, character or hand. A pale cool-blue solid studio background and delicate contact shadows support the artwork. Thoughtful spacing, happy and warm, clear at product-thumbnail size.
+Constraints: exactly square 1:1. One mascot, one cup, one offering hand. No text, no letters, no prices, no logo text, no watermark. Preserve the cream-blue-yellow BigMouse identity from Image 2. Not photorealistic, not a flat 2D illustration.
+

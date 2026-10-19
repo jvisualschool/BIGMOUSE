@@ -1,35 +1,39 @@
 # BigMouse
 
-[한국어](README.md) · [English](README.en.md)
+[한국어](https://github.com/jvisualschool/BIGMOUSE/blob/main/README.md) · [English](https://github.com/jvisualschool/BIGMOUSE/blob/main/README.en.md)
 
 | Magnifier · Fn | Spotlight · Control | Keystrokes · Option × 2 |
 | --- | --- | --- |
 | ![Magnifier · Fn](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/zoom.webp) | ![Spotlight · Control](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/spotlight.webp) | ![Keystrokes · Option × 2](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/keystrokes.webp) |
 
-<img src="Resources/AppIcon.png" width="96" alt="BigMouse icon">
+<img src="https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/Resources/AppIcon.png" width="96" alt="BigMouse icon">
 
 **A free macOS presentation tool that makes your pointer, clicks, and keystrokes visible.**
 
 Help an audience follow your actions during lessons, online classes, software demonstrations, and screen recordings. BigMouse runs in the menu bar and provides cursor highlighting, click effects, a spotlight, a magnifier, and keystroke display.
 
-**The first official release is ver 0.7, distributed free through GitHub and the developer website. There is no Mac App Store release.** No account, subscription, or paid feature unlock is required.
+**The latest official release is ver 0.8, distributed free through GitHub and the developer website. There is no Mac App Store release.** No account, subscription, or paid feature unlock is required.
 
 | Item | Details |
 | --- | --- |
-| First public version | **ver 0.7** |
+| Latest version | **ver 0.8** |
 | Website | [jvibeschool.org/BIGMOUSE](https://jvibeschool.org/BIGMOUSE/) |
 | GitHub | [jvisualschool/BIGMOUSE](https://github.com/jvisualschool/BIGMOUSE/) |
-| Downloads | Free download from the [v0.7 official release](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7) |
+| Downloads | Free download from the [v0.8 official release](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.8) |
 | macOS target | macOS 13 or later |
 | Prepared and verified architecture | Apple Silicon (`arm64`) |
 | Interface language | Korean for the South Korea macOS region; English everywhere else |
 | Price | Free |
 
-> **Release information:** Version 0.7 / build 15 is for Apple Silicon. It has an ad hoc signature, with no Developer ID signing, Hardened Runtime, or Apple notarization. macOS may block its first launch. Installation on another Mac, Intel support, and physical macOS 13 validation remain unverified.
+> **Release information:** Version 0.8 / build 21 is for Apple Silicon. It uses a dedicated signing certificate, with no Developer ID signing, Hardened Runtime, or Apple notarization. macOS may block its first launch. Installation on another Mac, Intel support, and physical macOS 13 validation remain unverified.
 
-**[Download the app ZIP](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip)** · [SHA-256](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip.sha256) · [Release notes](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)
+**[Download the app ZIP](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.8/BigMouse-0.8-macos-arm64.zip)** · [SHA-256](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.8/BigMouse-0.8-macos-arm64.zip.sha256) · [Release notes](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.8)
 
 **[Visual user guide](https://jvibeschool.org/BIGMOUSE/)** — Follow real settings screenshots, installation and permission steps, feature walkthroughs, and troubleshooting in Korean or English. Website sources are in `website/`.
+
+Version 0.8 adds separate shortcuts for **zoom, spotlight and keystrokes**. [Shortcut settings](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/SHORTCUTS.md) · [Changelog](https://github.com/jvisualschool/BIGMOUSE/blob/main/CHANGELOG.md)
+
+**Update permissions:** Moving from an earlier ad hoc build requires a one-time grant for Screen Recording and Input Monitoring. Later updates signed with the same certificate keep the app identity. [Signing and permissions](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/SIGNING.md)
 
 ## Contents
 
@@ -90,14 +94,14 @@ Check your chip and macOS version in **Apple menu → About This Mac**.
 - **Intel:** the arm64 package does not target your Mac. Intel distribution and validation are pending.
 - **Windows, Linux, and iPadOS:** not supported.
 
-Download from the [v0.7 official release](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7). The [BigMouse website](https://jvibeschool.org/BIGMOUSE/#download) links to the same GitHub app ZIP and checksum.
+Download from the [v0.8 official release](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.8). The [BigMouse website](https://jvibeschool.org/BIGMOUSE/#download) links to the same GitHub app ZIP and checksum.
 
-| Ver 0.7 file | Purpose |
+| Ver 0.8 file | Purpose |
 | --- | --- |
-| `BigMouse-0.7-macos-arm64.zip` | Installable app |
-| `BigMouse-0.7-macos-arm64.zip.sha256` | App ZIP checksum |
-| `BigMouse-0.7-source.zip` | Source for building locally |
-| `BigMouse-0.7-source.zip.sha256` | Source ZIP checksum |
+| `BigMouse-0.8-macos-arm64.zip` | Installable app |
+| `BigMouse-0.8-macos-arm64.zip.sha256` | App ZIP checksum |
+| `BigMouse-0.8-source.zip` | Source for building locally |
+| `BigMouse-0.8-source.zip.sha256` | Source ZIP checksum |
 
 Most users need the **app ZIP**. GitHub's automatic `Source code (zip)` download contains source, not the installable app. File version numbers change in later releases.
 
@@ -117,10 +121,10 @@ With the ZIP and its matching `.sha256` file in Downloads:
 
 ```sh
 cd ~/Downloads
-shasum -a 256 -c BigMouse-0.7-macos-arm64.zip.sha256
+shasum -a 256 -c BigMouse-0.8-macos-arm64.zip.sha256
 ```
 
-The expected result is `BigMouse-0.7-macos-arm64.zip: OK`. If it differs, do not run that file; download it again from an official channel. A checksum compares file contents; obtain both the ZIP and checksum from the official source.
+The expected result is `BigMouse-0.8-macos-arm64.zip: OK`. If it differs, do not run that file; download it again from an official channel. A checksum compares file contents; obtain both the ZIP and checksum from the official source.
 
 ### If macOS blocks the app
 
@@ -141,7 +145,7 @@ Grant only the permissions needed for your chosen features. Names vary slightly 
 
 ### Allow keystrokes
 
-1. Find **Keystrokes · Double-tap Option** in Settings.
+1. Find **Keystrokes** in Settings.
 2. Click **Permissions…** beside the permission message.
 3. Enable BigMouse in macOS **Input Monitoring**.
 4. Complete any authentication directly in the macOS dialog.
@@ -150,10 +154,10 @@ Grant only the permissions needed for your chosen features. Names vary slightly 
 
 ### Allow the magnifier
 
-1. Click **Permissions…** under **Zoom · Fn**.
+1. Click **Permissions…** under **Zoom**.
 2. Enable BigMouse in the macOS screen recording permission list.
 3. Relaunch when requested.
-4. Enable **Hold Fn to zoom** and hold Fn, or use **3-second preview**.
+4. Enable **Enable zoom** and hold Fn, or use **3-second preview**.
 
 Even when the permission name includes audio, **BigMouse does not capture audio**. It displays screen frames temporarily in the magnifier and does not create a recording file.
 
@@ -180,19 +184,28 @@ Enable **Sparkle around the pointer on click** to show a brief star-like effect 
 
 ### Spotlight
 
-Turn on **Enable spotlight**, then hold the selected **Hold key** combination. The area outside the pointer's circle dims; releasing the keys restores the screen.
+Turn on **Enable spotlight**, then hold the assigned shortcut. The area outside the pointer's circle dims; releasing the keys restores the screen.
 
-Choose **Control** (default), **Option+Shift**, **Control+Option**, or **Control+Shift**. **Bright area** changes the circle diameter; **Dim level** changes the darkness outside it. Use **3-second preview** to inspect the effect without holding the keys.
+Choose a modifier combination or a regular key with Command, Control or Option under **Shortcuts → Spotlight**. Control is the default. **Bright area** changes the circle diameter; **Dim level** changes the darkness outside it. Use **3-second preview** to inspect the effect without holding the keys.
 
-Extra modifiers, such as Command, prevent the selected combination from matching. Keys still reach your current app, so choose another combination if its shortcuts conflict.
+Extra modifiers, such as Command, prevent the selected combination from matching. Modifier-only bindings still reach your current app; regular key combinations are registered as BigMouse global shortcuts. Choose a different combination if it conflicts.
 
 ### Magnifier
 
-Enable **Hold Fn to zoom**. Point at a small label, menu, or icon and hold **Fn** to enlarge it in a circular lens. Release Fn to dismiss it.
+Enable **Enable zoom**. Point at a small label, menu, or icon and hold **Fn** to enlarge it in a circular lens. Release Fn to dismiss it.
 
-**Lens size** changes the circle diameter, while **Zoom level** changes the enlargement from 1.5× to 4×. **3-second preview** helps check permissions and appearance. The underlying app's zoom setting is unchanged. On multiple displays, the magnifier captures the display under the pointer. Fn is currently fixed as the activation key.
+**Lens size** changes the circle diameter, while **Zoom level** changes the enlargement from 1.5× to 4×. **3-second preview** helps check permissions and appearance. The underlying app's zoom setting is unchanged. On multiple displays, the magnifier captures the display under the pointer. Change the default Fn key under **Shortcuts → Zoom** at the top of Settings.
 
 ### Keystrokes
+
+Hangul characters combined with Command, Control or Option use their English physical-key labels, such as `⌘ㅊ → ⌘C`. The original input and input source are unchanged. Shift-only Hangul typing and other language layouts retain their labels.
+
+- **Keys to show → Shortcuts only:** show Command, Control or Option combinations. Hide plain letters, numbers, Space and Shift-only text input.
+- **Include special keys:** also show Enter, Tab, Esc, deletion, navigation and F1–F20 keys. Even with this option off, combinations such as `⌘Space` and `⌘←` remain visible.
+- **Keys to show → All keys:** keep displaying ordinary input. The special-key option does not affect this mode.
+
+New installations default to Shortcuts only with special keys included. Upgrades retain All keys. Both choices persist and apply immediately, clearing earlier on-screen key labels when changed.
+
 
 After granting Input Monitoring, use any of these controls:
 
@@ -229,9 +242,9 @@ Keystrokes turn off on launch, pause, sleep, session deactivation, and display r
 
 | Purpose | Default control | Customization |
 | --- | --- | --- |
-| Toggle keystrokes | Double-tap `⌥ Option` | Fixed |
-| Spotlight | Hold `⌃ Control` | Four combinations available |
-| Magnifier | Hold `Fn` | Fixed |
+| Toggle keystrokes | Double-tap `⌥ Option` | Settings → Shortcuts |
+| Spotlight | Hold `⌃ Control` | Settings → Shortcuts |
+| Magnifier | Hold `Fn` | Settings → Shortcuts |
 | Pause all effects | Menu bar → Pause | No global shortcut |
 
 Tap and release Option twice quickly without holding other keys. A long press, another key, or an intervening mouse click cancels the gesture.
@@ -251,10 +264,10 @@ These are fresh-install defaults; saved preferences take precedence. `pt` means 
 | Fill | 0–60% | 18% |
 | Hide ring after 2 seconds | On / off | Off |
 | Spotlight | On / off | On |
-| Spotlight shortcut | Four combinations | Control |
+| Zoom / spotlight / key shortcuts | Modifiers or a key combination | Fn / Control / Option twice |
 | Bright area diameter | 120–720pt | 320pt |
 | Dim level | 15–90% | 65% |
-| Fn zoom | On / off | On |
+| Zoom | On / off | On |
 | Lens diameter | 160–520pt | 300pt |
 | Zoom level | 1.5–4× | 2× |
 | Keystroke activation | On / off | Off at each launch |
@@ -305,14 +318,14 @@ BigMouse draws effects in separate overlay windows. **Whole-display sharing and 
 
 Detected macOS Secure Event Input clears the key display. Not every password field uses secure input, so **disable keystrokes before entering passwords, verification codes, or personal information**. Other recording/sharing software may capture visible overlays.
 
-See [SECURITY.md](SECURITY.md) for processing boundaries and private vulnerability reporting.
+See [SECURITY.md](https://github.com/jvisualschool/BIGMOUSE/blob/main/SECURITY.md) for processing boundaries and private vulnerability reporting.
 
 <a id="faq"></a>
 ## FAQ and troubleshooting
 
 ### 1. Is it free? Do I need the App Store?
 
-It is free through [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases) and the [website](https://jvibeschool.org/BIGMOUSE/). No App Store installation, account, subscription, or feature purchase is required. The first public version is ver 0.7.
+It is free through [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases) and the [website](https://jvibeschool.org/BIGMOUSE/). No App Store installation, account, subscription, or feature purchase is required. The latest official version is ver 0.8.
 
 ### 2. Why is there no window or Dock icon?
 
@@ -352,7 +365,7 @@ This prevents input from becoming visible unexpectedly. Re-enable with Option tw
 
 ### 8. Fn does not magnify anything.
 
-Check **Enable**, **Hold Fn to zoom**, and Screen Recording permission. Try **3-second preview**, read any permission message, and relaunch. If permission is already on, apply the recovery steps above to the screen recording permission list. Restoring Input Monitoring does not also grant Screen Recording.
+Check **Enable**, **Enable zoom**, and Screen Recording permission. Try **3-second preview**, read any permission message, and relaunch. If permission is already on, apply the recovery steps above to the screen recording permission list. Restoring Input Monitoring does not also grant Screen Recording.
 
 ### 9. Fn also opens emoji or switches input sources.
 
@@ -360,11 +373,11 @@ Check the globe/Fn key action in **System Settings → Keyboard**. Its label var
 
 ### 10. Control also triggers something in my current app.
 
-Keys still reach other apps. Change the spotlight shortcut to Option+Shift, Control+Option, or Control+Shift to avoid a conflict.
+Choose a different combination under **Shortcuts → Spotlight** at the top of Settings. Modifier-only bindings still reach other apps; regular key combinations are registered as BigMouse global shortcuts.
 
 ### 11. Korean text differs from the final sentence.
 
-The display shows individual key events, not the final composed IME text or document contents. Latin letters are shown in uppercase.
+Choose **Keys to display → Shortcuts only** to hide ordinary Korean typing. Command, Control and Option combinations use English key labels even with Korean input active. All keys mode displays individual events, which may differ from the final IME-composed text.
 
 ### 12. Long inputs disappear or large text does not fit the preview.
 
@@ -400,7 +413,7 @@ It draws presentation effects around the pointer. Pointer replacement/resizing, 
 
 ### 20. Is there a reset-to-defaults button?
 
-Not currently. Use the [defaults table](#defaults) to adjust values. Reinstalling the app may retain saved preferences.
+**Restore defaults** in Shortcuts resets the three shortcut assignments. Other settings have no combined reset button; use the [defaults table](#defaults) to adjust them. Reinstalling the app may retain saved preferences.
 
 <a id="maintenance"></a>
 ## Updating and uninstalling
@@ -423,21 +436,23 @@ xcode-select --install
 Extract the source ZIP or download the [repository](https://github.com/jvisualschool/BIGMOUSE/), then run from the folder containing `build.sh`:
 
 ```sh
-bash build.sh
-open dist/BigMouse.app
+bash build.sh --development
+open "dist/BigMouse Dev.app"
 ```
 
-The script builds for the host architecture, not a Universal binary. Apple Silicon has been checked. Compilation, resource copying, and signing happen in a fresh staging bundle before replacing the previous output. Local builds are ad hoc signed; **rebuilding may require reconnecting permissions**. Keep a stable execution path and recheck keys/Fn.
+The script builds for the host architecture, not a Universal binary. Apple Silicon has been checked. Compilation, resource copying, and signing happen in a fresh staging bundle before replacing the previous output. `--development` creates an ad hoc signed **BigMouse Dev.app** with a separate identifier. Development rebuilds may require reconnecting that app’s permissions. Official releases require the pinned signing key; a plain `bash build.sh` stops when the key is unavailable. See [signing instructions](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/SIGNING.md).
 
 ```sh
 bash test.sh
-codesign --verify --strict dist/BigMouse.app
+# Release maintainer only: requires the pinned signing key
+bash build.sh
+python3 scripts/signing.py verify dist/BigMouse.app
 bash scripts/package-release.sh
 ```
 
-Overlay checks require a logged-in macOS desktop session. After building the 0.7 source, packaging writes the app ZIP and checksum to `dist/releases/v0.7/`. It rejects unexpected bundle files, symlinks, and overwriting an existing archive. Preserve existing artifacts elsewhere before repackaging the same version.
+Overlay checks require a logged-in macOS desktop session. After building the 0.8 source, packaging writes the app ZIP and checksum to `dist/releases/v0.8/`. It rejects unexpected bundle files, symlinks, and overwriting an existing archive. Preserve existing artifacts elsewhere before repackaging the same version.
 
-Successful signature verification does not establish Developer ID signing or notarization. See the [distribution guide](docs/DISTRIBUTION.md).
+Successful signature verification does not establish Developer ID signing or notarization. See the [distribution guide](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/DISTRIBUTION.md).
 
 ### Development and commit conventions
 
@@ -446,7 +461,7 @@ Successful signature verification does not establish Developer ID signing or not
 - Preserve region-based language selection: Korean for South Korea, English elsewhere.
 - Do not write keystrokes or captured images to files, logs, or the network.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for change and validation guidelines.
+See [CONTRIBUTING.md](https://github.com/jvisualschool/BIGMOUSE/blob/main/CONTRIBUTING.md) for change and validation guidelines.
 
 ### Project structure
 
@@ -467,16 +482,16 @@ dist/                       Generated apps and packages; Git-ignored
 
 Use [GitHub Issues](https://github.com/jvisualschool/BIGMOUSE/issues) for bugs and feature requests. Include the app version and download source, macOS version, chip, monitor count, region, interface language, affected feature, permission state, reproduction steps, expected/actual results, and exact error message.
 
-Do not attach private input or credentials. Follow [SECURITY.md](SECURITY.md) to report security details privately.
+Do not attach private input or credentials. Follow [SECURITY.md](https://github.com/jvisualschool/BIGMOUSE/blob/main/SECURITY.md) to report security details privately.
 
-- [Korean README](README.md)
-- [GitHub and website distribution](docs/DISTRIBUTION.md)
-- [Changelog](CHANGELOG.md)
-- [ver 0.7 release notes](docs/releases/v0.7.md)
-- [Contributing](CONTRIBUTING.md)
-- [Security policy](SECURITY.md)
-- [Security review of development build 0.3.6](docs/security-review-2026-10-18.md)
-- [Third-party notices](THIRD_PARTY_NOTICES.md)
+- [Korean README](https://github.com/jvisualschool/BIGMOUSE/blob/main/README.md)
+- [GitHub and website distribution](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/DISTRIBUTION.md)
+- [Changelog](https://github.com/jvisualschool/BIGMOUSE/blob/main/CHANGELOG.md)
+- [ver 0.8 release notes](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/releases/v0.8.md)
+- [Contributing](https://github.com/jvisualschool/BIGMOUSE/blob/main/CONTRIBUTING.md)
+- [Security policy](https://github.com/jvisualschool/BIGMOUSE/blob/main/SECURITY.md)
+- [Security review of development build 0.3.6](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/security-review-2026-10-18.md)
+- [Third-party notices](https://github.com/jvisualschool/BIGMOUSE/blob/main/THIRD_PARTY_NOTICES.md)
 
 <a id="license"></a>
 ## Free distribution and licensing
@@ -485,4 +500,4 @@ Do not attach private input or credentials. Follow [SECURITY.md](SECURITY.md) to
 
 The app is free to use. No separate open-source license has been assigned to the source code; it is not labeled as MIT or another specific license. Contact the repository owner about modification or redistribution of source code or the app icon.
 
-Lucide icons retain their separate [ISC/MIT license](Resources/Lucide/LICENSE), included in the app.
+Lucide icons retain their separate [ISC/MIT license](https://github.com/jvisualschool/BIGMOUSE/blob/main/Resources/Lucide/LICENSE), included in the app.

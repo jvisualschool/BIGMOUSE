@@ -98,11 +98,13 @@ final class KeyDisplayRenderer {
 struct KeyDisplayPreview: NSViewRepresentable {
     let font: NSFont
     let mode: KeyDisplayMode
+    let filter: KeyDisplayFilter
 
     func makeNSView(context: Context) -> KeyPreviewView { KeyPreviewView() }
     func updateNSView(_ view: KeyPreviewView, context: Context) {
         view.font = font
         view.mode = mode
+        view.filter = filter
         view.needsLayout = true
     }
 }
@@ -110,6 +112,7 @@ struct KeyDisplayPreview: NSViewRepresentable {
 final class KeyPreviewView: NSView {
     var font = KeyDisplayFont.resolve(KeyDisplayFont.monospaced, size: 28)
     var mode = KeyDisplayMode.continuous
+    var filter = KeyDisplayFilter.allKeys
     private let renderer = KeyDisplayRenderer()
 
     init() {
@@ -123,7 +126,8 @@ final class KeyPreviewView: NSView {
 
     override func layout() {
         super.layout()
-        let size = renderer.render(KeyReadout(labels: ["A", "B", "C", "⌘C"], opacity: 1),
+        let labels = filter == .shortcutsOnly ? ["⌘C", "⌘V", "⇧⌘S"] : ["A", "B", "C", "⌘C"]
+        let size = renderer.render(KeyReadout(labels: labels, opacity: 1),
                                    font: font, mode: mode, maxWidth: bounds.width,
                                    scale: window?.backingScaleFactor ?? 2)
         CATransaction.begin()

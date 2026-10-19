@@ -58,7 +58,29 @@ let defaults = UserDefaults(suiteName: suite)!
 defer { defaults.removePersistentDomain(forName: suite) }
 let preferences = Preferences(defaults: defaults)
 check(preferences.enabled && preferences.haloEnabled && preferences.clicksEnabled, "First launch enables core effects")
-check(preferences.shortcut == .control, "Spotlight uses Control by default")
+check(preferences.shortcuts.spotlight == ShortcutBinding(flags: .control), "Spotlight uses Control by default")
+check(preferences.keyDisplayFilter == .shortcutsOnly && preferences.keyIncludeSpecialKeys,
+      "New installations show shortcuts and special keys")
+check(Preferences(defaults: defaults).keyDisplayFilter == .shortcutsOnly,
+      "A second launch does not mistake a new installation for an upgrade")
+let filterSuite = "com.jvisualschool.BigMouse.tests.filters.\(UUID().uuidString)"
+let filterDefaults = UserDefaults(suiteName: filterSuite)!
+defer { filterDefaults.removePersistentDomain(forName: filterSuite) }
+filterDefaults.set(true, forKey: "controlShortcutMigration")
+let legacyKeys = Preferences(defaults: filterDefaults)
+check(legacyKeys.keyDisplayFilter == .allKeys, "Upgrading keeps the previous all-key behavior")
+legacyKeys.keyDisplayFilter = .shortcutsOnly
+legacyKeys.keyIncludeSpecialKeys = false
+let savedKeys = Preferences(defaults: filterDefaults)
+check(savedKeys.keyDisplayFilter == .shortcutsOnly && !savedKeys.keyIncludeSpecialKeys,
+      "Both filtering choices survive reopening")
+filterDefaults.set("unknown-filter", forKey: "keyDisplayFilter")
+check(Preferences(defaults: filterDefaults).keyDisplayFilter == .shortcutsOnly,
+      "An invalid filter falls back to shortcuts only")
+legacyKeys.keyDisplayFilter = .allKeys
+check(Preferences(defaults: filterDefaults).keyDisplayFilter == .allKeys,
+      "An explicit all-key choice remains saved")
+
 check(SpotlightShortcut.control.matches(.control), "Control alone activates spotlight")
 check(!SpotlightShortcut.control.matches([.control, .command]), "Control with Command does not trigger spotlight")
 check(ZoomCapture.isShortcutHeld(.function), "Fn activates zoom")
@@ -111,7 +133,111 @@ check(!SpotlightShortcut.optionShift.matches([.option, .shift, .command]), "Unre
 check(SpotlightShortcut.optionShift.matches([.option, .shift, .capsLock]), "Caps Lock does not interfere")
 check(!SpotlightShortcut.optionShift.matches([]), "Releasing keys deactivates spotlight")
 
-var doubleOption = OptionDoubleTap()
+// Activation shortcuts: migration, validation, persistence, hold/toggle and lifecycle.
+let shortcutSuite = "com.jvisualschool.BigMouse.tests.shortcuts.\(UUID().uuidString)"
+let shortcutDefaults = UserDefaults(suiteName: shortcutSuite)!
+defer { shortcutDefaults.removePersistentDomain(forName: shortcutSuite) }
+let shortcutPrefs = Preferences(defaults: shortcutDefaults)
+check(shortcutPrefs.shortcuts == ShortcutBindings(), "All three original activation shortcuts remain the defaults")
+for legacy in SpotlightShortcut.allCases {
+    shortcutDefaults.removeObject(forKey: "activationShortcuts")
+    shortcutDefaults.set(legacy.rawValue, forKey: "shortcut")
+    let migrated = Preferences(defaults: shortcutDefaults)
+    check(migrated.shortcuts.spotlight.flags == legacy.flags, "Legacy spotlight assignment migrates: \(legacy.rawValue)")
+    check(Preferences(defaults: shortcutDefaults).shortcuts == migrated.shortcuts, "Migrated shortcuts survive relaunch")
+}
+let customZoom = ShortcutBinding(flags: [.control, .option], keyCode: 6)
+check(customZoom.isValid && customZoom.title == "⌃⌥Z", "Custom shortcuts use stable English physical-key labels")
+check(!ShortcutBinding(flags: [], keyCode: 0).isValid && !ShortcutBinding(flags: .shift, keyCode: 0).isValid,
+      "Ordinary typing cannot be registered as an activation shortcut")
+check(!ShortcutBinding(flags: [.function, .control], keyCode: 6).isValid,
+      "Fn with a regular key is not silently registered as a different shortcut")
+check(!ShortcutBinding(flags: .command, keyCode: 65535).isValid, "Unsupported key codes are rejected")
+check(ShortcutBinding.disabled.isValid && !ShortcutBinding.disabled.matches([]), "Unassigned shortcuts never activate")
+check(ShortcutBinding(flags: [.control, .option]).conflicts(with: customZoom), "Modifier-only prefixes conflict with regular-key assignments")
+check(!customZoom.conflicts(with: ShortcutBinding(flags: [.control, .option], keyCode: 7)), "Different main keys can share modifiers")
+let shortcutController = ShortcutController(preferences: shortcutPrefs)
+check(shortcutController.assign(ShortcutBinding(flags: .control), to: .zoom) != nil,
+      "Duplicate activation assignments are rejected")
+check(shortcutPrefs.shortcuts.zoom.flags == .function, "Rejected assignment keeps the previous preference")
+check(shortcutController.assign(ShortcutBinding(flags: .shift), to: .zoom) == nil, "A new modifier-only shortcut can be assigned")
+check(Preferences(defaults: shortcutDefaults).shortcuts.zoom.flags == .shift, "Custom assignment survives relaunch")
+check(shortcutController.assign(.disabled, to: .zoom) == nil && shortcutPrefs.shortcuts.zoom.isDisabled,
+      "A feature shortcut can be unassigned")
+shortcutController.resetDefaults()
+check(shortcutPrefs.shortcuts == ShortcutBindings(), "Restore defaults restores all three shortcuts")
+shortcutDefaults.set(Data("broken".utf8), forKey: "activationShortcuts")
+check(Preferences(defaults: shortcutDefaults).shortcuts.isValid, "Corrupt shortcut storage recovers to valid settings")
+var duplicateBindings = ShortcutBindings()
+duplicateBindings.zoom = duplicateBindings.keys
+shortcutDefaults.set(try! JSONEncoder().encode(duplicateBindings), forKey: "activationShortcuts")
+check(Preferences(defaults: shortcutDefaults).shortcuts.isValid, "Conflicting saved assignments recover safely")
+
+var activation = ShortcutActivation(bindings: ShortcutBindings())
+check(!activation.isHeld(.zoom, flags: .function), "Held keys at startup cannot accidentally activate an effect")
+activation.update(flags: [], at: 0, inputCount: 0, mouseDown: false)
+check(activation.isHeld(.zoom, flags: .function), "Default Fn hold activates zoom after release")
+check(!activation.isHeld(.zoom, flags: [.function, .command]), "Extra modifiers do not activate a modifier-only shortcut")
+check(!activation.isHeld(.zoom, flags: []), "Releasing Fn ends zoom")
+activation.reset()
+check(!activation.isHeld(.spotlight, flags: .control), "Suspension clears held effects until release")
+activation.update(flags: [], at: 1, inputCount: 0, mouseDown: false)
+check(activation.isHeld(.spotlight, flags: [.control, .capsLock]), "Caps Lock does not interfere with activation")
+var customBindings = ShortcutBindings()
+customBindings.zoom = customZoom
+customBindings.keys = ShortcutBinding(flags: [.control, .option], keyCode: 7)
+activation = ShortcutActivation(bindings: customBindings)
+activation.update(flags: [], at: 0, inputCount: 0, mouseDown: false)
+check(!activation.receive(.zoom, down: true), "Zoom hotkey press holds without toggling key display")
+check(activation.isHeld(.zoom, flags: [.control, .option]), "Registered key-down holds the effect")
+activation.receive(.zoom, down: false)
+check(!activation.isHeld(.zoom, flags: [.control, .option]), "Registered key-up releases the effect")
+check(activation.receive(.keys, down: true), "Key-display combination toggles on first press")
+check(!activation.receive(.keys, down: true), "Held-key repeat cannot repeatedly toggle")
+activation.receive(.keys, down: false)
+check(activation.receive(.keys, down: true), "A new press can toggle again after release")
+activation.receive(.zoom, down: true)
+activation.update(flags: [], at: 1, inputCount: 0, mouseDown: false)
+check(!activation.isHeld(.zoom, flags: []), "Releasing modifiers clears a held hotkey even if key-up is missing")
+activation.reset()
+check(!activation.receive(.keys, down: true), "Recording or suspension blocks pressed-key callbacks until release")
+for flags: NSEvent.ModifierFlags in [.control, .shift, .command, .function, [.option, .shift]] {
+    var gesture = ModifierDoubleTap(modifiers: flags)
+    gesture.update(flags: flags, at: 1, inputCount: 0)
+    check(!gesture.update(flags: [], at: 1.08, inputCount: 0), "A single selected-modifier tap does not toggle")
+    gesture.update(flags: flags, at: 1.2, inputCount: 0)
+    check(gesture.update(flags: [], at: 1.28, inputCount: 0), "Selected modifiers support double tap: \(flags.rawValue)")
+}
+var mouseGesture = ModifierDoubleTap(modifiers: .control)
+mouseGesture.update(flags: .control, at: 1, inputCount: 0)
+mouseGesture.update(flags: [], at: 1.08, inputCount: 0)
+mouseGesture.update(flags: .control, at: 1.2, inputCount: 0, mouseDown: true)
+check(!mouseGesture.update(flags: [], at: 1.28, inputCount: 0), "Dragging cancels custom modifier double taps")
+
+// Exercise actual OS registration and release without posting user keystrokes.
+var isolatedBindings = ShortcutBindings()
+for action in ShortcutAction.allCases { isolatedBindings[action] = .disabled }
+isolatedBindings.zoom = ShortcutBinding(flags: [.command, .control, .option, .shift], keyCode: 79)
+shortcutPrefs.shortcuts = isolatedBindings
+shortcutController.setActive(true)
+check(shortcutController.errors.isEmpty, "A free custom shortcut registers with macOS")
+let competingPrefs = Preferences(defaults: shortcutDefaults)
+competingPrefs.shortcuts = ShortcutBindings()
+let competingController = ShortcutController(preferences: competingPrefs)
+check(competingController.assign(isolatedBindings.zoom, to: .zoom) != nil,
+      "An already registered shortcut is rejected without replacing settings")
+shortcutController.beginRecording()
+check(competingController.assign(isolatedBindings.zoom, to: .zoom) == nil,
+      "Recording releases registrations so the chosen keys can be captured locally")
+shortcutController.endRecording()
+check(shortcutController.errors.isEmpty, "Closing the recorder restores registrations")
+shortcutController.setActive(false)
+competingController.setActive(true)
+check(competingController.errors.isEmpty, "Pausing releases hotkeys for other clients")
+competingController.setActive(false)
+check(ShortcutController.isSystemShortcut(ShortcutBinding(flags: .command, keyCode: 12)), "BigMouse Quit is protected from reassignment")
+
+var doubleOption = ModifierDoubleTap()
 check(!doubleOption.update(flags: .option, at: 1, inputCount: 0), "Option down alone cannot toggle key display")
 check(!doubleOption.update(flags: [], at: 1.08, inputCount: 0), "One Option tap cannot toggle key display")
 doubleOption.update(flags: .option, at: 1.2, inputCount: 0)
@@ -122,12 +248,12 @@ doubleOption.update(flags: .option, at: 2.4, inputCount: 0)
 check(!doubleOption.update(flags: [], at: 2.48, inputCount: 0), "Separated Option taps do not toggle")
 doubleOption.update(flags: .option, at: 2.6, inputCount: 0)
 check(!doubleOption.update(flags: [], at: 3.2, inputCount: 0), "Holding Option cancels a double tap")
-doubleOption = OptionDoubleTap()
+doubleOption = ModifierDoubleTap()
 doubleOption.update(flags: .option, at: 4, inputCount: 0)
 doubleOption.update(flags: [], at: 4.05, inputCount: 0)
 doubleOption.update(flags: [.option, .command], at: 4.2, inputCount: 0)
 check(!doubleOption.update(flags: [], at: 4.25, inputCount: 0), "Option with another modifier does not toggle")
-doubleOption = OptionDoubleTap()
+doubleOption = ModifierDoubleTap()
 doubleOption.update(flags: .option, at: 5, inputCount: 0)
 doubleOption.update(flags: [], at: 5.05, inputCount: 0)
 doubleOption.update(flags: .option, at: 5.2, inputCount: 1)
@@ -136,6 +262,71 @@ check(KeystrokeMonitor.label(keyCode: 8, characters: "c", flags: .command) == "�
 check(KeystrokeMonitor.label(keyCode: 8, characters: "\u{3}", flags: .control) == "⌃C", "Control characters have readable key labels")
 check(KeystrokeMonitor.label(keyCode: 126, characters: nil, flags: .shift) == "⇧↑", "Shift and navigation keys are readable")
 check(KeystrokeMonitor.label(keyCode: 0, characters: "ㅁ", flags: []) == "ㅁ", "Unicode key labels retain Korean input characters")
+
+// Exercise real AppKit event fields as well as the label/filter decisions, without
+// granting permissions, starting an event tap or typing into another application.
+for (flags, expected) in [(NSEvent.ModifierFlags.command, "⌘C"), (.control, "⌃C"), (.option, "⌥C"),
+                          ([.command, .shift], "⇧⌘C"), ([.command, .option], "⌥⌘C")] {
+    for character in ["ㅊ", "ᄎ", "ᆾ", "차"] {
+        check(KeystrokeMonitor.label(keyCode: 8, characters: character, flags: flags) == expected,
+              "Hangul shortcut variants use the English physical key: \(expected)")
+    }
+}
+check(KeystrokeMonitor.label(keyCode: 12, characters: "ㅃ", flags: .shift) == "⇧ㅃ",
+      "Shift-only Korean typing keeps its Hangul label")
+check(KeystrokeMonitor.label(keyCode: 8, characters: "j", flags: .command) == "⌘J",
+      "Latin layouts such as Dvorak are not forced to QWERTY")
+check(KeystrokeMonitor.label(keyCode: 8, characters: "そ", flags: .command) == "⌘そ",
+      "Non-Hangul input layouts remain unchanged")
+for (code, character) in [(UInt16(0), "ㅁ"), (0, "a"), (18, "1"), (24, "+"), (49, " ")] {
+    for flags: NSEvent.ModifierFlags in [[], .shift, .capsLock, .function] {
+        check(KeystrokeMonitor.label(keyCode: code, characters: character, flags: flags,
+                                     filter: .shortcutsOnly) == nil,
+              "Shortcuts-only hides plain typing, including Shift/Caps Lock/Fn")
+    }
+}
+for code: UInt16 in [36, 48, 51, 53, 76, 117, 123, 124, 125, 126, 115, 119, 116, 121, 122, 90] {
+    check(KeystrokeMonitor.label(keyCode: code, characters: nil, flags: [],
+                                 filter: .shortcutsOnly, includeSpecialKeys: true) != nil,
+          "Selected navigation, editing and function keys remain visible")
+    check(KeystrokeMonitor.label(keyCode: code, characters: nil, flags: .function,
+                                 filter: .shortcutsOnly, includeSpecialKeys: false) == nil,
+          "Special keys carrying an Fn flag still obey their visibility setting")
+    check(KeystrokeMonitor.label(keyCode: code, characters: nil, flags: .command,
+                                 filter: .shortcutsOnly, includeSpecialKeys: false) != nil,
+          "Modifier shortcuts remain visible when plain special keys are hidden")
+}
+check(KeystrokeMonitor.label(keyCode: 49, characters: " ", flags: .command,
+                             filter: .shortcutsOnly, includeSpecialKeys: false) == "⌘SPACE",
+      "Command-Space remains a shortcut")
+check(KeystrokeMonitor.label(keyCode: 36, characters: nil, flags: .shift,
+                             filter: .shortcutsOnly) == "⇧↩",
+      "Shift-Enter is visible when special keys are included")
+check(KeystrokeMonitor.label(keyCode: 0, characters: "ㅁ", flags: [],
+                             filter: .allKeys, includeSpecialKeys: false) == "ㅁ"
+      && KeystrokeMonitor.label(keyCode: 49, characters: " ", flags: [],
+                                filter: .allKeys, includeSpecialKeys: false) == "SPACE",
+      "All-key mode retains letters and Space regardless of the special-key option")
+let filteredMonitor = KeystrokeMonitor(preferences: savedKeys)
+func keyEvent(_ code: UInt16, _ character: String, _ flags: NSEvent.ModifierFlags = []) -> NSEvent {
+    NSEvent.keyEvent(with: .keyDown, location: .zero, modifierFlags: flags, timestamp: 0,
+                    windowNumber: 0, context: nil, characters: character,
+                    charactersIgnoringModifiers: character, isARepeat: false, keyCode: code)!
+}
+let hangulShortcut = keyEvent(8, "ㅊ", .command)
+check(filteredMonitor.label(for: hangulShortcut) == "⌘C", "The event path normalizes a Korean Command shortcut")
+check(hangulShortcut.characters == "ㅊ" && hangulShortcut.charactersIgnoringModifiers == "ㅊ",
+      "Formatting never mutates the original keyboard event")
+check(filteredMonitor.label(for: keyEvent(0, "ㅁ")) == nil
+      && filteredMonitor.label(for: keyEvent(123, "")) == nil, "The monitor applies the saved filter")
+savedKeys.keyIncludeSpecialKeys = true
+check(filteredMonitor.label(for: keyEvent(123, "")) == "←", "Special-key settings apply immediately")
+savedKeys.keyDisplayFilter = .allKeys
+check(filteredMonitor.label(for: keyEvent(0, "ㅁ")) == "ㅁ", "All-key mode applies without restarting")
+savedKeys.keyDisplayFilter = .shortcutsOnly
+check(filteredMonitor.label(for: keyEvent(0, "ㅁ")) == nil, "Returning to shortcut mode immediately hides typing")
+check(!filteredMonitor.isEnabled, "Inspecting settings and labels never enables input monitoring")
+
 var keyBuffer = KeyReadoutBuffer()
 keyBuffer.append("⌘C", at: 1)
 check(keyBuffer.readout(at: 2).text == "⌘C", "Pressed keys remain visible briefly")

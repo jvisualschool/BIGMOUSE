@@ -1,0 +1,18 @@
+Generated with the built-in image_gen tool on 2026-10-18.
+Source: artwork/bigmouse-coffee-voxel.png
+Output: artwork/bigmouse-coffee-title.png
+Purpose: Add the exact title BigMouse Coffee to the existing square coffee illustration.
+
+Use case: precise-object-edit
+Asset type: square BigMouse Coffee cover illustration.
+Input image: the existing BigMouse coffee voxel illustration is the edit target.
+
+Add the exact title "BigMouse Coffee" in the UPPER PART of this illustration, cute and highly readable, as a lovely integrated cover title.
+Text (verbatim): "BigMouse Coffee"
+Spelling and capitalization must be exactly BigMouse Coffee, no colon, no other words.
+Title styling: large playful rounded block letters, cream-white faces with a rich cobalt-blue outline and a modest blue 3D extrusion, softly beveled corners, toy-like tactile voxel/pixel character that matches the artwork. Cheerful and charming, deliberately typeset, not a generic thin font. Center the title horizontally in one well-spaced line with ample top and side margins. Strong readable contrast on the existing light-blue background.
+
+Preserve the existing adorable cream-and-blue computer-mouse mascot, its black square eyes and smile, pink cheeks, scroll wheel, blue cable, welcoming gesture, offered blue coffee cup and saucer, voxel hand, heart-shaped coffee steam, keyboard and blue cursor. Preserve all recognizable identities, materials, proportions, voxel style, palette, lighting and softness. Keep the same square 1:1 format and the light-blue opaque background.
+To make clean room for the title, uniformly scale the existing scene down just slightly and shift it downward within the square canvas, extending the matching plain background at the top. Keep the mouse and coffee as the main visual subjects. The title must not cover the mascot's face, the coffee cup or the heart steam; do not squeeze the artwork or distort the characters. Title and artwork should feel like one polished premium product cover.
+No border, no watermark, no additional captions, no price, no new characters or decorative clutter. This is the same illustration with a cute BigMouse Coffee title, not a new scene.
+

@@ -246,8 +246,9 @@ final class OverlayController {
 
     func applyPreferences() {
         stopTracking()
-        // Keep polling the double-Option gesture even when other visual effects are off.
+        // Keep polling activation shortcuts even when other visual effects are off.
         let active = preferences.enabled && !suspended
+        keys.shortcuts.setActive(active)
         guard active else {
             keys.suspend()
             lastKeyReadout = KeyReadout()
@@ -310,12 +311,12 @@ final class OverlayController {
         let keyReadout = keys.poll(flags: NSEvent.modifierFlags, at: now)
         let moved = point != lastPoint
         if moved { lastMovement = now }
-        let spotlight = preferences.spotlightEnabled &&
-            (preferences.shortcut.matches(NSEvent.modifierFlags) || now < previewUntil)
+        let spotlight = preferences.spotlightEnabled && !keys.shortcuts.isRecording &&
+            (keys.shortcuts.isHeld(.spotlight, flags: NSEvent.modifierFlags) || now < previewUntil)
         let previousSpotlightProgress = spotlightTransition.progress
         let spotlightProgress = spotlightTransition.update(visible: spotlight, at: now)
-        let zoomHeld = preferences.zoomEnabled &&
-            (ZoomCapture.isShortcutHeld(NSEvent.modifierFlags) || now < zoomPreviewUntil)
+        let zoomHeld = preferences.zoomEnabled && !keys.shortcuts.isRecording &&
+            (keys.shortcuts.isHeld(.zoom, flags: NSEvent.modifierFlags) || now < zoomPreviewUntil)
         let screen = NSScreen.screens.first { $0.frame.contains(point) }
         let excludedWindows = Set(surfaces.map { CGWindowID($0.panel.windowNumber) })
         zoom.update(active: zoomHeld || zoomTransition.isActive, screen: screen, excluding: excludedWindows)
@@ -355,6 +356,7 @@ final class OverlayController {
     }
 
     func stop() {
+        keys.shortcuts.setActive(false)
         keys.suspend()
         lastKeyReadout = KeyReadout()
         zoom.stop()

@@ -1,35 +1,39 @@
 # BigMouse
 
-[한국어](README.md) · [English](README.en.md)
+[한국어](https://github.com/jvisualschool/BIGMOUSE/blob/main/README.md) · [English](https://github.com/jvisualschool/BIGMOUSE/blob/main/README.en.md)
 
 | 돋보기 확대 · Fn | 스포트라이트 · Control | 키 입력 표시 · Option × 2 |
 | --- | --- | --- |
 | ![돋보기 확대 · Fn](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/zoom.webp) | ![스포트라이트 · Control](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/spotlight.webp) | ![키 입력 표시 · Option × 2](https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/website/assets/demos/keystrokes.webp) |
 
-<img src="Resources/AppIcon.png" width="96" alt="BigMouse 아이콘">
+<img src="https://raw.githubusercontent.com/jvisualschool/BIGMOUSE/main/Resources/AppIcon.png" width="96" alt="BigMouse 아이콘">
 
 **마우스 위치, 클릭, 키 입력을 화면에 보여 주는 무료 macOS 발표 도구입니다.**
 
 강의, 온라인 수업, 소프트웨어 시연과 화면 녹화에서 청중이 발표자의 조작을 쉽게 따라오도록 돕습니다. 메뉴 막대에서 실행되며 커서 강조, 클릭 효과, 스포트라이트, 돋보기와 키 입력 표시를 제공합니다.
 
-**첫 공식 버전은 ver 0.7입니다. GitHub와 개발자 홈페이지에서 무료로 배포하며, Mac App Store에는 배포하지 않습니다.** 회원 가입, 구독, 유료 기능 해제가 필요하지 않습니다.
+**최신 공식 버전은 ver 0.8입니다. GitHub와 개발자 홈페이지에서 무료로 배포하며, Mac App Store에는 배포하지 않습니다.** 회원 가입, 구독, 유료 기능 해제가 필요하지 않습니다.
 
 | 항목 | 내용 |
 | --- | --- |
-| 첫 공개 버전 | **ver 0.7** |
+| 최신 공개 버전 | **ver 0.8** |
 | 홈페이지 | [jvibeschool.org/BIGMOUSE](https://jvibeschool.org/BIGMOUSE/) |
 | GitHub | [jvisualschool/BIGMOUSE](https://github.com/jvisualschool/BIGMOUSE/) |
-| 앱 다운로드 | [v0.7 공식 릴리스](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)에서 무료 다운로드 |
+| 앱 다운로드 | [v0.8 공식 릴리스](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.8)에서 무료 다운로드 |
 | 운영체제 | macOS 13 이상을 대상으로 빌드 |
 | 준비·검증한 아키텍처 | Apple Silicon (`arm64`) |
 | 표시 언어 | macOS 지역이 대한민국이면 한국어, 그 외 지역이면 영어 |
 | 사용 요금 | 무료 |
 
-> **배포 정보:** ver 0.7 / 빌드 15는 Apple Silicon용입니다. 임시 서명(ad hoc)만 적용되어 있으며 Developer ID 서명·Hardened Runtime·Apple 공증은 없습니다. macOS가 첫 실행을 차단할 수 있습니다. 별도 Mac에서의 신규 설치, Intel Mac과 macOS 13 실기기 검증은 완료하지 않았습니다.
+> **배포 정보:** ver 0.8 / 빌드 21은 Apple Silicon용입니다. 업데이트 간 앱 식별을 유지하는 전용 인증서로 서명하며 Developer ID 서명·Hardened Runtime·Apple 공증은 없습니다. macOS가 첫 실행을 차단할 수 있습니다. 별도 Mac에서의 신규 설치, Intel Mac과 macOS 13 실기기 검증은 완료하지 않았습니다.
 
-**[앱 ZIP 다운로드](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip)** · [SHA-256](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.7/BigMouse-0.7-macos-arm64.zip.sha256) · [릴리스 노트](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)
+**[앱 ZIP 다운로드](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.8/BigMouse-0.8-macos-arm64.zip)** · [SHA-256](https://github.com/jvisualschool/BIGMOUSE/releases/download/v0.8/BigMouse-0.8-macos-arm64.zip.sha256) · [릴리스 노트](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.8)
 
 **[이미지로 따라 하는 사용 가이드](https://jvibeschool.org/BIGMOUSE/)** — 실제 설정 화면, 설치·권한 안내, 기능별 사용법과 문제 해결을 한국어·영어로 제공합니다. 웹사이트 소스는 `website/`에 있습니다.
+
+0.8에서 **확대·스포트라이트·키 표시의 단축키**를 각각 변경할 수 있습니다. [단축키 설정](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/SHORTCUTS.md) · [개선 로그](https://github.com/jvisualschool/BIGMOUSE/blob/main/CHANGELOG.md)
+
+**업데이트 권한:** 기존 임시 서명에서 0.8로 처음 전환할 때는 화면 기록·입력 모니터링을 한 번 다시 허용합니다. 이후 같은 인증서로 서명한 업데이트는 앱 식별을 유지합니다. [서명과 권한 안내](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/SIGNING.md)
 
 ## 목차
 
@@ -92,14 +96,14 @@ Swift와 macOS 기본 프레임워크로 만든 네이티브 앱입니다. 표�
 
 ### 2. 다운로드
 
-[v0.7 공식 릴리스](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.7)에서 받습니다. [BigMouse 홈페이지](https://jvibeschool.org/BIGMOUSE/#download)도 같은 GitHub 앱 ZIP과 체크섬으로 연결됩니다.
+[v0.8 공식 릴리스](https://github.com/jvisualschool/BIGMOUSE/releases/tag/v0.8)에서 받습니다. [BigMouse 홈페이지](https://jvibeschool.org/BIGMOUSE/#download)도 같은 GitHub 앱 ZIP과 체크섬으로 연결됩니다.
 
-| ver 0.7 배포 파일 | 용도 |
+| ver 0.8 배포 파일 | 용도 |
 | --- | --- |
-| `BigMouse-0.7-macos-arm64.zip` | 설치할 앱 |
-| `BigMouse-0.7-macos-arm64.zip.sha256` | 앱 ZIP 무결성 확인용 |
-| `BigMouse-0.7-source.zip` | 직접 빌드할 사람을 위한 소스 코드 |
-| `BigMouse-0.7-source.zip.sha256` | 소스 ZIP 무결성 확인용 |
+| `BigMouse-0.8-macos-arm64.zip` | 설치할 앱 |
+| `BigMouse-0.8-macos-arm64.zip.sha256` | 앱 ZIP 무결성 확인용 |
+| `BigMouse-0.8-source.zip` | 직접 빌드할 사람을 위한 소스 코드 |
+| `BigMouse-0.8-source.zip.sha256` | 소스 ZIP 무결성 확인용 |
 
 일반 사용자는 **앱 ZIP**을 선택하면 됩니다. GitHub가 자동으로 표시하는 `Source code (zip)`은 실행할 앱이 들어 있는 설치 파일과 다릅니다. 이후 버전에서는 파일명의 번호가 달라집니다.
 
@@ -120,10 +124,10 @@ Swift와 macOS 기본 프레임워크로 만든 네이티브 앱입니다. 표�
 ```sh
 # 두 파일을 기본 다운로드 폴더에 받았다면
 cd ~/Downloads
-shasum -a 256 -c BigMouse-0.7-macos-arm64.zip.sha256
+shasum -a 256 -c BigMouse-0.8-macos-arm64.zip.sha256
 ```
 
-결과가 `BigMouse-0.7-macos-arm64.zip: OK`이면 제공된 체크섬과 일치합니다. 일치하지 않으면 실행하지 말고 공식 배포 경로에서 다시 받으세요. 체크섬은 파일이 같은지 확인하는 수단이므로 ZIP과 체크섬 모두 공식 경로에서 받아야 합니다.
+결과가 `BigMouse-0.8-macos-arm64.zip: OK`이면 제공된 체크섬과 일치합니다. 일치하지 않으면 실행하지 말고 공식 배포 경로에서 다시 받으세요. 체크섬은 파일이 같은지 확인하는 수단이므로 ZIP과 체크섬 모두 공식 경로에서 받아야 합니다.
 
 ### macOS가 실행을 차단하는 경우
 
@@ -144,7 +148,7 @@ GitHub·홈페이지 직접 배포에도 **Developer ID 서명과 Apple 공증**
 
 ### 키 입력 표시 허용
 
-1. BigMouse 설정의 **키 입력 · Option 두 번** 부분을 찾습니다.
+1. BigMouse 설정의 **키 입력** 부분을 찾습니다.
 2. 권한 안내 옆의 **권한 설정…**을 누릅니다.
 3. macOS **입력 모니터링**에서 BigMouse를 켭니다.
 4. macOS가 인증을 요청하면 시스템 창에서 직접 인증합니다.
@@ -153,10 +157,10 @@ GitHub·홈페이지 직접 배포에도 **Developer ID 서명과 Apple 공증**
 
 ### 돋보기 허용
 
-1. BigMouse 설정의 **줌 · Fn** 부분에서 **권한 설정…**을 누릅니다.
+1. BigMouse 설정의 **확대** 부분에서 **권한 설정…**을 누릅니다.
 2. macOS의 화면 기록 권한 목록에서 BigMouse를 켭니다.
 3. 요청에 따라 앱을 다시 실행합니다.
-4. **Fn을 누르는 동안 확대**를 켜고 Fn을 누르거나 **3초 미리보기**로 확인합니다.
+4. **확대 사용**를 켜고 Fn을 누르거나 **3초 미리보기**로 확인합니다.
 
 권한 이름에 “오디오”가 포함되어도 **BigMouse는 오디오를 캡처하지 않습니다.** 화면 프레임을 돋보기에 잠시 표시할 뿐 녹화 파일을 만들지 않습니다.
 
@@ -185,30 +189,32 @@ macOS 포인터 자체의 크기나 모양은 바꾸지 않습니다. 원 크기
 
 **스포트라이트 사용**을 켜고 지정한 키를 누르고 있으면 커서 주변의 원형 영역을 제외한 화면이 어두워집니다. 키를 놓으면 원래 화면으로 돌아옵니다.
 
-**누르고 있을 키**에서 다음 중 하나를 고릅니다.
-
-| 선택 | 조작 |
-| --- | --- |
-| `⌃ Control` | Control만 누르기 — 기본값 |
-| `⌥ Option + ⇧ Shift` | Option과 Shift를 함께 누르기 |
-| `⌃ Control + ⌥ Option` | Control과 Option을 함께 누르기 |
-| `⌃ Control + ⇧ Shift` | Control과 Shift를 함께 누르기 |
+설정 맨 위 **단축키 → 스포트라이트**에서 조합을 지정합니다. 기본값은 Control입니다. 보조키 조합 또는 Command·Control·Option을 포함한 일반 키 조합을 사용할 수 있습니다.
 
 **밝은 영역**은 원의 크기, **주변 어둡게**는 바깥 영역의 어두운 정도입니다. **3초 미리보기**로 키를 누르지 않고 효과를 확인할 수 있습니다.
 
-선택한 조합에 Command 등 다른 보조 키를 추가하면 스포트라이트가 켜지지 않습니다. BigMouse는 다른 앱에 전달되는 키를 막지 않으므로 사용하는 앱의 단축키와 겹치면 조합을 바꿔 주세요.
+선택한 조합에 Command 등 다른 보조 키를 추가하면 스포트라이트가 켜지지 않습니다. 보조키만 지정하면 원래 키 동작을 전달하고, 일반 키 조합은 BigMouse의 전역 단축키로 등록합니다. 사용하는 앱의 단축키와 겹치면 조합을 바꿔 주세요.
 
 ### 돋보기 확대
 
-**Fn을 누르는 동안 확대**를 켭니다. 작은 글자·아이콘·메뉴 위로 포인터를 옮기고 **Fn을 누르고 있으면** 원형 돋보기가 나타납니다. Fn을 놓으면 사라집니다.
+**확대 사용**를 켭니다. 작은 글자·아이콘·메뉴 위로 포인터를 옮기고 **Fn을 누르고 있으면** 원형 돋보기가 나타납니다. Fn을 놓으면 사라집니다.
 
 - **돋보기 크기:** 확대 화면을 담는 원의 지름입니다.
 - **확대 배율:** 원 안의 내용을 1.5–4배로 확대합니다.
 - **3초 미리보기:** 화면 기록 권한과 확대 모양을 확인합니다.
 
-Fn은 현재 고정된 조작 키입니다. 원본 앱의 확대 배율이나 문서 크기는 바꾸지 않습니다. 여러 모니터를 사용할 때는 포인터가 있는 화면을 캡처합니다.
+기본값 Fn은 설정 맨 위 **단축키 → 확대**에서 변경할 수 있습니다. 원본 앱의 확대 배율이나 문서 크기는 바꾸지 않습니다. 여러 모니터를 사용할 때는 포인터가 있는 화면을 캡처합니다.
 
 ### 화면에 누른 키 표시
+
+Command·Control·Option과 한글 키를 함께 누르면 대응하는 영문 키로 표시합니다. 예: `⌘ㅊ → ⌘C`, `⌘ㅍ → ⌘V`. 실제 입력과 한영 상태는 바뀌지 않습니다. Shift만 사용한 한글 입력은 그대로 표시합니다.
+
+- **표시할 키 → 단축키만:** Command·Control·Option 조합을 표시합니다. 일반 문자·숫자·Space와 Shift만 사용한 글자 입력은 숨깁니다.
+- **특수키도 표시:** 단축키만 모드에서 Enter·Tab·Esc·삭제·방향키·Home/End·Page Up/Down·F1–F20을 추가로 표시합니다. 이 옵션을 꺼도 `⌘Space`, `⌘←` 같은 조합은 표시합니다.
+- **표시할 키 → 모든 키:** 기존처럼 일반 입력도 표시합니다. 특수키 옵션은 이 모드에 영향을 주지 않습니다.
+
+새 설치는 ‘단축키만’과 ‘특수키도 표시’가 기본값입니다. 기존 설치는 ‘모든 키’를 유지합니다. 두 선택은 저장되고 즉시 적용되며, 바꿀 때 이전 키 표시를 비웁니다.
+
 
 입력 모니터링을 허용한 후 다음 중 하나로 켭니다.
 
@@ -243,11 +249,13 @@ Fn은 현재 고정된 조작 키입니다. 원본 앱의 확대 배율이나 �
 <a id="shortcuts"></a>
 ## 단축키 한눈에 보기
 
+> **0.8:** 확대·스포트라이트·키 표시의 단축키를 각각 직접 지정할 수 있습니다. 기본값·사용법·검증 범위는 [단축키 설정 안내](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/SHORTCUTS.md)를 참고하세요. 아래 표는 공개된 0.8의 기본 조작입니다.
+
 | 목적 | 기본 조작 | 변경 가능 여부 |
 | --- | --- | --- |
-| 키 입력 표시 켜기·끄기 | `⌥ Option` 짧게 두 번 | 현재 고정 |
-| 스포트라이트 | `⌃ Control`을 누르는 동안 | 설정에서 4가지 조합 중 선택 |
-| 돋보기 | `Fn`을 누르는 동안 | 현재 고정 |
+| 키 입력 표시 켜기·끄기 | `⌥ Option` 짧게 두 번 | 설정 → 단축키에서 변경 |
+| 스포트라이트 | `⌃ Control`을 누르는 동안 | 설정 → 단축키에서 변경 |
+| 돋보기 | `Fn`을 누르는 동안 | 설정 → 단축키에서 변경 |
 | 모든 효과 일시 정지 | 메뉴 막대 → 일시 정지 | 전역 단축키 없음 |
 
 Option은 다른 키를 함께 누르지 말고 빠르게 눌렀다 놓는 동작을 두 번 반복하세요. 길게 누르거나 중간에 다른 키·마우스 클릭이 들어가면 전환으로 처리하지 않습니다.
@@ -267,10 +275,10 @@ Option은 다른 키를 함께 누르지 말고 빠르게 눌렀다 놓는 동�
 | 채우기 | 0–60% | 18% |
 | 2초 정지 시 원 숨기기 | 켜기·끄기 | 끄기 |
 | 스포트라이트 | 켜기·끄기 | 켜기 |
-| 스포트라이트 키 | 4가지 조합 | Control |
+| 확대·스포트라이트·키 표시 단축키 | 보조키 또는 일반 키 조합 | Fn / Control / Option 두 번 |
 | 밝은 영역 | 120–720pt | 320pt |
 | 주변 어둡게 | 15–90% | 65% |
-| Fn 확대 | 켜기·끄기 | 켜기 |
+| 확대 | 켜기·끄기 | 켜기 |
 | 돋보기 크기 | 160–520pt | 300pt |
 | 확대 배율 | 1.5–4배 | 2배 |
 | 키 표시 활성 상태 | 켜기·끄기 | 실행할 때마다 끄기 |
@@ -328,14 +336,14 @@ BigMouse의 효과는 별도의 표시 창으로 그려집니다. **전체 화�
 
 macOS 보안 입력을 감지하면 키 표시를 비웁니다. 모든 앱의 암호 입력란이 보안 입력을 사용하는 것은 아니므로 **비밀번호·인증 코드·개인정보 입력 전에는 키 표시를 끄세요.** 화면에 보인 내용은 다른 화면 공유·녹화 프로그램에 담길 수 있습니다.
 
-구체적인 처리 범위와 취약점 제보 방법은 [SECURITY.md](SECURITY.md)를 참고하세요.
+구체적인 처리 범위와 취약점 제보 방법은 [SECURITY.md](https://github.com/jvisualschool/BIGMOUSE/blob/main/SECURITY.md)를 참고하세요.
 
 <a id="faq"></a>
 ## FAQ와 문제 해결
 
 ### 1. 정말 무료인가요? App Store에서 받아야 하나요?
 
-무료입니다. [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases)와 [홈페이지](https://jvibeschool.org/BIGMOUSE/)에서 직접 배포합니다. App Store 설치, 회원 가입, 구독, 유료 기능 해제는 필요하지 않습니다. 첫 공식 버전은 ver 0.7입니다.
+무료입니다. [GitHub Releases](https://github.com/jvisualschool/BIGMOUSE/releases)와 [홈페이지](https://jvibeschool.org/BIGMOUSE/)에서 직접 배포합니다. App Store 설치, 회원 가입, 구독, 유료 기능 해제는 필요하지 않습니다. 최신 공식 버전은 ver 0.8입니다.
 
 ### 2. 실행했는데 창도 Dock 아이콘도 보이지 않아요.
 
@@ -375,7 +383,7 @@ macOS 보안 입력을 감지하면 키 표시를 비웁니다. 모든 앱의 �
 
 ### 8. Fn을 눌러도 확대가 안 돼요.
 
-**사용**, **Fn을 누르는 동안 확대**, **화면 기록 권한**을 확인합니다. **3초 미리보기**도 동작하지 않으면 권한 안내를 확인하고 재실행하세요. 권한이 이미 켜져 있다면 위 재연결 절차를 **화면 기록** 권한 항목에도 적용할 수 있습니다. 키 표시가 복구되었어도 화면 기록은 별도 권한입니다.
+**사용**, **확대 사용**, **화면 기록 권한**을 확인합니다. **3초 미리보기**도 동작하지 않으면 권한 안내를 확인하고 재실행하세요. 권한이 이미 켜져 있다면 위 재연결 절차를 **화면 기록** 권한 항목에도 적용할 수 있습니다. 키 표시가 복구되었어도 화면 기록은 별도 권한입니다.
 
 ### 9. Fn을 누르면 이모티콘 창이나 입력 소스 전환도 실행돼요.
 
@@ -383,11 +391,11 @@ macOS의 Fn·지구본 키 동작과 함께 실행될 수 있습니다. **시스
 
 ### 10. Control을 누르면 작업 중인 앱의 기능도 실행돼요.
 
-BigMouse는 키 입력을 다른 앱으로부터 차단하지 않습니다. 스포트라이트의 **누르고 있을 키**를 Option+Shift, Control+Option 또는 Control+Shift 중 겹치지 않는 조합으로 바꿉니다.
+설정 맨 위 **단축키 → 스포트라이트**에서 겹치지 않는 조합으로 바꿉니다. 보조키만 지정하면 원래 키 동작을 전달하고, 일반 키 조합은 BigMouse의 전역 단축키로 등록됩니다.
 
 ### 11. 한글 입력 결과가 완성된 문장과 달라요.
 
-키 표시는 개별 키 이벤트를 보여 줍니다. 한글 IME가 조합한 최종 문장이나 문서 내용을 읽는 기능이 아니므로 입력란의 완성된 글자와 다를 수 있습니다. 라틴 문자는 대문자 형태로 표시합니다.
+**표시할 키 → 단축키만**을 선택하면 일반 한글 입력을 숨깁니다. Command·Control·Option 조합은 한글 입력 상태에서도 영문 키로 표시합니다. 모든 키 모드는 개별 키 이벤트를 보여 주므로 한글 IME가 조합한 최종 문장과 다를 수 있습니다.
 
 ### 12. 긴 입력이 사라지거나 큰 글자가 미리보기에서 잘려요.
 
@@ -423,7 +431,7 @@ BigMouse는 키 입력을 다른 앱으로부터 차단하지 않습니다. 스�
 
 ### 20. 설정을 초기값으로 돌리는 버튼이 있나요?
 
-현재 일괄 초기화 버튼은 없습니다. [기본값 표](#defaults)를 보며 필요한 값을 조절하세요. 앱만 다시 설치해도 저장된 설정은 남을 수 있습니다.
+단축키 영역의 **기본값 복원**은 세 기능의 단축키를 초기화합니다. 나머지 설정을 한 번에 초기화하는 버튼은 없으며 [기본값 표](#defaults)를 보며 조절할 수 있습니다. 앱만 다시 설치해도 저장된 설정은 남을 수 있습니다.
 
 <a id="maintenance"></a>
 ## 업데이트와 삭제
@@ -462,25 +470,27 @@ xcode-select --install
 소스 ZIP을 풀거나 [저장소](https://github.com/jvisualschool/BIGMOUSE/)를 내려받은 뒤, `build.sh`가 있는 프로젝트 폴더에서 실행합니다.
 
 ```sh
-bash build.sh
-open dist/BigMouse.app
+bash build.sh --development
+open "dist/BigMouse Dev.app"
 ```
 
 `build.sh`는 실행 중인 Mac의 아키텍처로 빌드합니다. 현재 검증한 환경은 Apple Silicon이며 Universal 바이너리는 만들지 않습니다. 새 임시 폴더에서 컴파일·리소스 복사·서명을 마친 뒤 기존 결과를 교체합니다.
 
-직접 빌드한 앱에는 임시 서명을 사용합니다. **재빌드 후 권한을 다시 연결해야 할 수 있으므로**, 실제 실행할 앱 경로를 일정하게 유지하고 키 표시·Fn 확대를 다시 확인하세요.
+`--development`는 별도 식별자의 **BigMouse Dev.app**을 임시 서명으로 만듭니다. 개발 앱 재빌드는 개발 앱의 권한 재연결이 필요할 수 있습니다. 공식 배포 앱은 개발자의 고정 서명 키로만 빌드하며, 키가 없는 기본 `bash build.sh` 실행은 중단됩니다. [서명 안내](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/SIGNING.md)를 참고하세요.
 
 ### 검사와 패키징
 
 ```sh
 bash test.sh
-codesign --verify --strict dist/BigMouse.app
+# 배포 담당자: 고정 서명 키가 있는 환경에서만 실행
+bash build.sh
+python3 scripts/signing.py verify dist/BigMouse.app
 bash scripts/package-release.sh
 ```
 
-화면 표시 검사는 로그인된 macOS 데스크톱 세션이 필요합니다. 0.7 소스를 빌드한 뒤 패키징하면 `dist/releases/v0.7/`에 ZIP과 SHA-256 파일이 생성됩니다. 스크립트는 알 수 없는 앱 내부 파일, 심볼릭 링크, 기존 ZIP 덮어쓰기를 거부합니다. 같은 버전을 다시 묶으려면 기존 산출물을 별도 위치에 보관하세요.
+화면 표시 검사는 로그인된 macOS 데스크톱 세션이 필요합니다. 0.8 소스를 빌드한 뒤 패키징하면 `dist/releases/v0.8/`에 ZIP과 SHA-256 파일이 생성됩니다. 스크립트는 알 수 없는 앱 내부 파일, 심볼릭 링크, 기존 ZIP 덮어쓰기를 거부합니다. 같은 버전을 다시 묶으려면 기존 산출물을 별도 위치에 보관하세요.
 
-서명 검증 성공은 Developer ID 서명·Apple 공증 완료를 뜻하지 않습니다. 공개 배포 절차는 [GitHub·홈페이지 배포 문서](docs/DISTRIBUTION.md)에 있습니다.
+서명 검증 성공은 Developer ID 서명·Apple 공증 완료를 뜻하지 않습니다. 공개 배포 절차는 [GitHub·홈페이지 배포 문서](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/DISTRIBUTION.md)에 있습니다.
 
 ### 개발 및 커밋 규칙
 
@@ -489,7 +499,7 @@ bash scripts/package-release.sh
 - 언어 선택은 macOS 지역을 기준으로 유지합니다. 대한민국은 한국어, 그 외 지역은 영어입니다.
 - 키 입력이나 캡처 화면을 파일·로그·네트워크로 출력하지 않습니다.
 
-자세한 변경·검증 기준은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참고하세요.
+자세한 변경·검증 기준은 [CONTRIBUTING.md](https://github.com/jvisualschool/BIGMOUSE/blob/main/CONTRIBUTING.md)를 참고하세요.
 
 ### 프로젝트 구성
 
@@ -516,18 +526,18 @@ dist/                       생성된 앱과 배포 파일 — Git 제외
 - 문제 기능, 권한 상태, 재현 순서
 - 기대한 결과와 실제 결과, 오류 안내 문구
 
-민감한 입력 내용이나 인증 정보는 첨부하지 마세요. 보안 취약점은 공개 이슈에 세부 내용을 게시하지 말고 [비공개 제보 안내](SECURITY.md)를 따릅니다.
+민감한 입력 내용이나 인증 정보는 첨부하지 마세요. 보안 취약점은 공개 이슈에 세부 내용을 게시하지 말고 [비공개 제보 안내](https://github.com/jvisualschool/BIGMOUSE/blob/main/SECURITY.md)를 따릅니다.
 
 | 문서 | 내용 |
 | --- | --- |
-| [English README](README.en.md) | 영어 사용 안내 |
-| [배포 절차](docs/DISTRIBUTION.md) | GitHub·홈페이지 무료 배포, 서명·공증, 패키징과 게시 확인 |
-| [변경 기록](CHANGELOG.md) | 버전별 변경 내용 |
-| [ver 0.7 릴리스 노트](docs/releases/v0.7.md) | 첫 공개 릴리스 준비 내용과 확인 범위 |
-| [기여 안내](CONTRIBUTING.md) | 개발·번역·검증 기준 |
-| [보안 정책](SECURITY.md) | 데이터 처리와 취약점 제보 |
-| [2026-10-18 보안 점검](docs/security-review-2026-10-18.md) | 0.3.6 개발 빌드 점검 결과와 검증 한계 |
-| [외부 리소스 고지](THIRD_PARTY_NOTICES.md) | Lucide 아이콘 등 리소스 출처 |
+| [English README](https://github.com/jvisualschool/BIGMOUSE/blob/main/README.en.md) | 영어 사용 안내 |
+| [배포 절차](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/DISTRIBUTION.md) | GitHub·홈페이지 무료 배포, 서명·공증, 패키징과 게시 확인 |
+| [변경 기록](https://github.com/jvisualschool/BIGMOUSE/blob/main/CHANGELOG.md) | 버전별 변경 내용 |
+| [ver 0.8 릴리스 노트](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/releases/v0.8.md) | 0.8 개선 내용과 확인 범위 |
+| [기여 안내](https://github.com/jvisualschool/BIGMOUSE/blob/main/CONTRIBUTING.md) | 개발·번역·검증 기준 |
+| [보안 정책](https://github.com/jvisualschool/BIGMOUSE/blob/main/SECURITY.md) | 데이터 처리와 취약점 제보 |
+| [2026-10-18 보안 점검](https://github.com/jvisualschool/BIGMOUSE/blob/main/docs/security-review-2026-10-18.md) | 0.3.6 개발 빌드 점검 결과와 검증 한계 |
+| [외부 리소스 고지](https://github.com/jvisualschool/BIGMOUSE/blob/main/THIRD_PARTY_NOTICES.md) | Lucide 아이콘 등 리소스 출처 |
 
 <a id="license"></a>
 ## 무료 배포와 라이선스
@@ -536,4 +546,4 @@ dist/                       생성된 앱과 배포 파일 — Git 제외
 
 앱은 무료로 사용할 수 있습니다. 현재 소스 코드에는 별도의 오픈소스 라이선스를 지정하지 않았으며, MIT 등 특정 라이선스로 표시하지 않습니다. 소스 코드나 앱 아이콘의 수정·재배포 조건은 저장소에 문의해 주세요.
 
-설정 화면에 사용한 Lucide 아이콘에는 별도의 [ISC/MIT 라이선스](Resources/Lucide/LICENSE)가 적용되며 해당 고지를 앱에 포함합니다.
+설정 화면에 사용한 Lucide 아이콘에는 별도의 [ISC/MIT 라이선스](https://github.com/jvisualschool/BIGMOUSE/blob/main/Resources/Lucide/LICENSE)가 적용되며 해당 고지를 앱에 포함합니다.

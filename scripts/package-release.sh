@@ -25,7 +25,7 @@ while IFS= read -r entry; do
   esac
 done < <(find "$APP" -type f -print)
 
-codesign --verify --strict "$APP"
+python3 scripts/signing.py verify "$APP"
 plutil -lint "$APP/Contents/Info.plist" \
   "$APP/Contents/Resources/en.lproj/Localizable.strings" \
   "$APP/Contents/Resources/ko.lproj/Localizable.strings"
@@ -57,4 +57,4 @@ ditto -c -k --keepParent "$APP" "$STAGING_DIR/$NAME"
 )
 mv "$STAGING_DIR/$NAME" "$STAGING_DIR/$NAME.sha256" "$RELEASE_DIR/"
 printf 'Packaged: %s\n' "$RELEASE_DIR/$NAME"
-printf 'This verifies bundle integrity, not Developer ID signing or notarization.\n'
+printf 'Fixed signing identity verified; Apple notarization is separate. / 고정 서명 확인 완료. Apple 공증은 별도입니다.\n'

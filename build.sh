@@ -1,7 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")"
+DEVELOPMENT=0
+case "${1:-}" in
+  '') python3 scripts/signing.py check ;;
+  --development) DEVELOPMENT=1 ;;
+  *) printf 'Usage: bash build.sh [--development]\n' >&2; exit 1 ;;
+esac
 OUTPUT_APP="$PWD/dist/BigMouse.app"
+if [ "$DEVELOPMENT" = 1 ]; then OUTPUT_APP="$PWD/dist/BigMouse Dev.app"; fi
 if [ -L "$PWD/dist" ] || [ -L "$OUTPUT_APP" ]; then
   printf 'Refusing a symlinked build destination.\n' >&2
   exit 1
@@ -37,8 +44,16 @@ cp Resources/Info.plist "$APP/Contents/Info.plist"
 mkdir -p "$APP/Contents/Resources/Lucide"
 cp Resources/Lucide/*.png Resources/Lucide/LICENSE "$APP/Contents/Resources/Lucide/"
 cp -R Resources/en.lproj Resources/ko.lproj "$APP/Contents/Resources/"
-codesign --force --sign - "$APP"
-codesign --verify --strict "$APP"
+if [ "$DEVELOPMENT" = 1 ]; then
+  # A separate identity keeps experimental builds away from release permissions.
+  /usr/libexec/PlistBuddy -c 'Set CFBundleIdentifier com.jvisualschool.BigMouse.Development' "$APP/Contents/Info.plist"
+  /usr/libexec/PlistBuddy -c 'Set CFBundleDisplayName BigMouse Dev' "$APP/Contents/Info.plist"
+  /usr/libexec/PlistBuddy -c 'Set CFBundleName BigMouse Dev' "$APP/Contents/Info.plist"
+  codesign --force --sign - "$APP"
+  codesign --verify --strict "$APP"
+else
+  python3 scripts/signing.py sign "$APP"
+fi
 # Only replace the prior build after compilation, resource copy and signing succeed.
 # A clean staging bundle prevents stale files from entering future releases.
 if [ -e "$OUTPUT_APP" ]; then mv "$OUTPUT_APP" "$STAGING_DIR/previous.app"; fi

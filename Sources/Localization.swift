@@ -18,6 +18,23 @@ enum L10n {
     static let language = AppLanguage.resolve(for: .current)
 
     enum Key: String, CaseIterable {
+        case shortcutSettings
+        case shortcutNone
+        case shortcutHold
+        case shortcutDoubleTap
+        case shortcutToggle
+        case shortcutEditHint
+        case shortcutReset
+        case shortcutRecordTitle
+        case shortcutRecordHoldHelp
+        case shortcutRecordToggleHelp
+        case shortcutPressKeys
+        case shortcutInvalid
+        case shortcutDuplicate
+        case shortcutUnavailable
+        case shortcutCancel
+        case shortcutApply
+        case enableZoom
         case appIcon
         case enabled
         case haloPreview
@@ -32,6 +49,11 @@ enum L10n {
         case clickEffects
         case showKeys
         case keysShortcutHint
+        case keyFilter
+        case shortcutsOnly
+        case allKeys
+        case includeSpecialKeys
+        case specialKeysHelp
         case font
         case systemFont
         case monospacedFont
@@ -58,6 +80,7 @@ enum L10n {
         case on
         case paused
         case autoSaved
+        case versionFormat
         case keyPreview
         case yellow
         case orange
@@ -83,6 +106,7 @@ enum L10n {
         case settings
         case settingsTitle
         case screenPermissionRestart
+        case screenPermissionHelp
         case screenPermissionNeeded
         case screenNotFound
         case zoomStartFailed
@@ -108,6 +132,10 @@ enum L10n {
             ?? key.rawValue
         return bundles[language]?.localizedString(forKey: key.rawValue, value: fallback, table: nil)
             ?? fallback
+    }
+
+    static func format(_ key: Key, _ value: String) -> String {
+        String(format: text(key), locale: language.locale, value)
     }
 
     static func spotlightShortcut(_ shortcut: String) -> String {

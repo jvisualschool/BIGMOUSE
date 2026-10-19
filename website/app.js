@@ -46,10 +46,23 @@
     const t = guideContent[language];
     document.documentElement.lang = language;
     document.title = t.pageTitle;
+    const launchSource = $('#launch-source');
+    if (launchSource) launchSource.href = 'https://support.apple.com/' + (language === 'ko' ? 'ko-kr' : 'en-us') + '/102445';
     document.querySelectorAll('[data-t]').forEach(n => n.textContent = t[n.dataset.t]);
     document.querySelectorAll('[data-alt]').forEach(n => n.alt = t[n.dataset.alt]);
     document.querySelectorAll('[data-aria]').forEach(n => n.setAttribute('aria-label',t[n.dataset.aria]));
     document.querySelectorAll('[data-lang]').forEach(n => n.setAttribute('aria-pressed',String(n.dataset.lang===language)));
+    const releases = $('#release-history'); releases.replaceChildren();
+    t.releases.forEach(release => {
+      const article = el('article', 'release-entry');
+      const meta = el('div', 'release-meta');
+      const date = el('time', '', release.date); date.dateTime = release.date;
+      meta.append(el('span', 'release-version', release.version), date);
+      const content = el('div', 'release-content');
+      const changes = el('ul'); release.changes.forEach(text => changes.append(el('li', '', text)));
+      content.append(el('h3', '', release.title), changes);
+      article.append(meta, content); releases.append(article);
+    });
     const steps = $('#start-steps'); steps.replaceChildren();
     t.start.forEach(([title,description]) => {
       const li=el('li'); li.append(el('h3','',title),el('p','',description)); steps.append(li);

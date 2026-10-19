@@ -54,6 +54,12 @@ enum SpotlightShortcut: String, CaseIterable, Identifiable {
     }
 }
 
+enum KeyDisplayFilter: String, CaseIterable, Identifiable {
+    case shortcutsOnly, allKeys
+    var id: String { rawValue }
+    var title: String { L10n.text(self == .shortcutsOnly ? .shortcutsOnly : .allKeys) }
+}
+
 enum KeyDisplayMode: String, CaseIterable, Identifiable {
     case continuous, separate
     var id: String { rawValue }
@@ -122,16 +128,26 @@ final class Preferences: ObservableObject {
     @Published var zoomScale: Double { didSet { save() } }
     @Published var hideWhenIdle: Bool { didSet { save() } }
     @Published var accent: Accent { didSet { save() } }
-    @Published var shortcut: SpotlightShortcut { didSet { save() } }
+    @Published var shortcuts: ShortcutBindings { didSet { save() } }
     @Published var keyFontFamily: String { didSet { save() } }
     @Published var keyFontSize: Double { didSet { save() } }
     @Published var keyDisplayMode: KeyDisplayMode { didSet { save() } }
     @Published var keyDisplayPosition: KeyDisplayPosition { didSet { save() } }
+    @Published var keyDisplayFilter: KeyDisplayFilter { didSet { save() } }
+    @Published var keyIncludeSpecialKeys: Bool { didSet { save() } }
 
     var keyFont: NSFont { KeyDisplayFont.resolve(keyFontFamily, size: keyFontSize) }
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
+        // Older builds persist this marker on first launch. Keep their all-key behavior;
+        // new installations start with shortcuts only. Persist the choice before the
+        // marker is created so a second launch cannot look like a legacy upgrade.
+        let initialFilter: KeyDisplayFilter = defaults.bool(forKey: "controlShortcutMigration") ? .allKeys : .shortcutsOnly
+        let savedFilter = defaults.string(forKey: "keyDisplayFilter")
+        let resolvedFilter = savedFilter.flatMap(KeyDisplayFilter.init(rawValue:))
+            ?? (savedFilter == nil ? initialFilter : .shortcutsOnly)
+        defaults.set(resolvedFilter.rawValue, forKey: "keyDisplayFilter")
         defaults.register(defaults: [
             "enabled": true, "haloEnabled": true, "clicksEnabled": true,
             "spotlightEnabled": true, "zoomEnabled": true, "haloDiameter": 56.0,
@@ -140,7 +156,8 @@ final class Preferences: ObservableObject {
             "accent": Accent.amber.rawValue, "shortcut": SpotlightShortcut.control.rawValue,
             "keyFontFamily": KeyDisplayFont.monospaced, "keyFontSize": 28.0,
             "keyDisplayMode": KeyDisplayMode.continuous.rawValue,
-            "keyDisplayPosition": KeyDisplayPosition.bottom.rawValue
+            "keyDisplayPosition": KeyDisplayPosition.bottom.rawValue,
+            "keyIncludeSpecialKeys": true
         ])
         // Apply the user's requested shortcut once when upgrading the first prototype.
         if !defaults.bool(forKey: "controlShortcutMigration") {
@@ -161,13 +178,22 @@ final class Preferences: ObservableObject {
         zoomScale = Self.clamp(defaults.double(forKey: "zoomScale"), to: 1.5...4, fallback: 2)
         hideWhenIdle = defaults.bool(forKey: "hideWhenIdle")
         accent = Accent(rawValue: defaults.string(forKey: "accent") ?? "") ?? .amber
-        shortcut = SpotlightShortcut(rawValue: defaults.string(forKey: "shortcut") ?? "") ?? .control
+        let legacy = SpotlightShortcut(rawValue: defaults.string(forKey: "shortcut") ?? "") ?? .control
+        var migrated = ShortcutBindings()
+        migrated.spotlight = ShortcutBinding(flags: legacy.flags)
+        if let data = defaults.data(forKey: "activationShortcuts"),
+           let saved = try? JSONDecoder().decode(ShortcutBindings.self, from: data), saved.isValid {
+            shortcuts = saved
+        } else { shortcuts = migrated }
         let family = defaults.string(forKey: "keyFontFamily") ?? KeyDisplayFont.monospaced
         keyFontFamily = [KeyDisplayFont.system, KeyDisplayFont.monospaced].contains(family)
             || KeyDisplayFont.families.contains(family) ? family : KeyDisplayFont.monospaced
         keyFontSize = Self.clamp(defaults.double(forKey: "keyFontSize"), to: 18...128, fallback: 28)
         keyDisplayMode = KeyDisplayMode(rawValue: defaults.string(forKey: "keyDisplayMode") ?? "") ?? .continuous
         keyDisplayPosition = KeyDisplayPosition(rawValue: defaults.string(forKey: "keyDisplayPosition") ?? "") ?? .bottom
+        keyDisplayFilter = resolvedFilter
+        keyIncludeSpecialKeys = defaults.bool(forKey: "keyIncludeSpecialKeys")
+        if let data = try? JSONEncoder().encode(shortcuts) { defaults.set(data, forKey: "activationShortcuts") }
     }
 
     static func clamp(_ value: Double, to range: ClosedRange<Double>, fallback: Double) -> Double {
@@ -189,10 +215,12 @@ final class Preferences: ObservableObject {
         defaults.set(zoomScale, forKey: "zoomScale")
         defaults.set(hideWhenIdle, forKey: "hideWhenIdle")
         defaults.set(accent.rawValue, forKey: "accent")
-        defaults.set(shortcut.rawValue, forKey: "shortcut")
+        if let data = try? JSONEncoder().encode(shortcuts) { defaults.set(data, forKey: "activationShortcuts") }
         defaults.set(keyFontFamily, forKey: "keyFontFamily")
         defaults.set(keyFontSize, forKey: "keyFontSize")
         defaults.set(keyDisplayMode.rawValue, forKey: "keyDisplayMode")
         defaults.set(keyDisplayPosition.rawValue, forKey: "keyDisplayPosition")
+        defaults.set(keyDisplayFilter.rawValue, forKey: "keyDisplayFilter")
+        defaults.set(keyIncludeSpecialKeys, forKey: "keyIncludeSpecialKeys")
     }
 }

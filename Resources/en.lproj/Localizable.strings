@@ -22,7 +22,7 @@
 "displayPosition" = "Position";
 "inputPermissionRequired" = "Input Monitoring permission is required.";
 "permissionSettings" = "Permissions…";
-"keysSection" = "Keystrokes · Double-tap Option";
+"keysSection" = "Keystrokes";
 "enableSpotlight" = "Enable spotlight";
 "holdKey" = "Hold key";
 "brightArea" = "Bright area";
@@ -35,7 +35,7 @@
 "zoomScale" = "Zoom level";
 "zoomUnit" = "×";
 "zoomPermissionRequired" = "Zoom requires Screen Recording permission.";
-"zoom" = "Zoom · Fn";
+"zoom" = "Zoom";
 "on" = "On";
 "paused" = "Paused";
 "autoSaved" = "Settings are saved automatically";
@@ -66,8 +66,35 @@
 "screenPermissionRestart" = "Allow BigMouse in System Settings, then relaunch the app.";
 "screenPermissionNeeded" = "Screen Recording permission is required to use zoom.";
 "screenNotFound" = "The current display could not be found.";
-"zoomStartFailed" = "Zoom could not start. Check permissions, then press Fn again.";
-"captureStopped" = "Screen capture stopped. Release Fn, then press it again.";
+"zoomStartFailed" = "Zoom could not start. Check permissions, then press your shortcut again.";
+"captureStopped" = "Screen capture stopped. Release your shortcut, then press it again.";
 "keyPermissionNeeded" = "Input Monitoring permission is required to show keystrokes.";
 "keyPermissionRestart" = "Allow Input Monitoring, then relaunch BigMouse.";
 "keysOn" = "Keys on";
+
+"keyFilter" = "Keys to show";
+"shortcutsOnly" = "Shortcuts only";
+"allKeys" = "All keys";
+"includeSpecialKeys" = "Include special keys";
+"specialKeysHelp" = "Show Enter, Tab, Esc, deletion, navigation and function keys. Hide plain text and Space.";
+"versionFormat" = "Version %@";
+
+"shortcutSettings" = "Shortcuts";
+"shortcutNone" = "Unassigned";
+"shortcutHold" = "Hold %@";
+"shortcutDoubleTap" = "Double-tap %@";
+"shortcutToggle" = "%@ to toggle";
+"shortcutEditHint" = "Click a shortcut to change it.";
+"shortcutReset" = "Restore defaults";
+"shortcutRecordTitle" = "Set %@ shortcut";
+"shortcutRecordHoldHelp" = "Press and release a modifier key or combination. For a regular key, include Command, Control or Option. The effect stays on while you hold the shortcut.";
+"shortcutRecordToggleHelp" = "Press and release a modifier key or combination to use a double tap. Or include a regular key with Command, Control or Option to toggle with a single press.";
+"shortcutPressKeys" = "Press your shortcut";
+"shortcutInvalid" = "Include Command, Control or Option with a regular key. Fn can only be used in modifier-only combinations.";
+"shortcutDuplicate" = "This combination overlaps with %@. Choose another shortcut.";
+"shortcutUnavailable" = "This shortcut is in use by the system or another app, or could not be registered. Choose another combination.";
+"shortcutCancel" = "Cancel";
+"shortcutApply" = "Assign";
+"enableZoom" = "Enable zoom";
+
+"screenPermissionHelp" = "Allow BigMouse in System Settings → Privacy & Security → Screen Recording, then relaunch the app. If it is already on after an update, turn it off and on again.";

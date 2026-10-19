@@ -1,0 +1,14 @@
+--- a/index.html
++++ b/index.html
+@@ -490,6 +490,11 @@
+       <span class="hero-btn-text">Jinho Game Desk</span>
+       <span class="hero-btn-arrow"><i data-lucide="chevron-right"></i></span>
+     </a>
++    <a href="/BIGMOUSE/" class="hero-btn" id="heroBigMouseBtn">
++      <img src="/BIGMOUSE/assets/app-icon.png" alt="" class="hero-btn-icon" aria-hidden="true">
++      <span class="hero-btn-text">BigMouse</span>
++      <span class="hero-btn-arrow"><i data-lucide="chevron-right"></i></span>
++    </a>
+   </div>
+ 
+   <div class="stats-grid">

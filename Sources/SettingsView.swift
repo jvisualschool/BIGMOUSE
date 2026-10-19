@@ -22,7 +22,24 @@ struct SettingsView: View {
             }
             .padding(22)
             Divider()
+            if preferences.enabled && preferences.zoomEnabled, let message = zoom.message {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(message).font(.callout).fontWeight(.medium)
+                    if !zoom.permissionGranted {
+                        Text(L10n.text(.screenPermissionHelp))
+                            .font(.caption).foregroundStyle(.secondary)
+                        Button(L10n.text(.permissionSettings)) { zoom.requestPermission() }
+                            .accessibilityIdentifier("zoomPermissionNoticeButton")
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal, 22).padding(.vertical, 12)
+                .accessibilityIdentifier("zoomNotice")
+                Divider()
+            }
             Form {
+                ShortcutSettingsView(preferences: preferences, controller: keys.shortcuts)
                 Section {
                     HStack {
                         Spacer()
@@ -63,8 +80,17 @@ struct SettingsView: View {
                 Section {
                     Toggle(L10n.text(.showKeys), isOn: Binding(get: { keys.isEnabled }, set: keys.setEnabled))
                         .accessibilityIdentifier("keystrokeToggle")
-                    Text(L10n.text(.keysShortcutHint))
+                    Text(preferences.shortcuts.keys.instruction(for: .keys))
                         .font(.caption).foregroundStyle(.secondary)
+                    Picker(L10n.text(.keyFilter), selection: $preferences.keyDisplayFilter) {
+                        ForEach(KeyDisplayFilter.allCases) { filter in Text(filter.title).tag(filter) }
+                    }
+                    .pickerStyle(.segmented)
+                    .accessibilityIdentifier("keyDisplayFilter")
+                    Toggle(L10n.text(.includeSpecialKeys), isOn: $preferences.keyIncludeSpecialKeys)
+                        .disabled(preferences.keyDisplayFilter == .allKeys)
+                        .help(L10n.text(.specialKeysHelp))
+                        .accessibilityIdentifier("keyIncludeSpecialKeys")
                     Picker(L10n.text(.font), selection: $preferences.keyFontFamily) {
                         Text(L10n.text(.systemFont)).tag(KeyDisplayFont.system)
                         Text(L10n.text(.monospacedFont)).tag(KeyDisplayFont.monospaced)
@@ -99,7 +125,8 @@ struct SettingsView: View {
                         .frame(maxWidth: .infinity)
                     }
                     .padding(.vertical, 4)
-                    KeyDisplayPreview(font: preferences.keyFont, mode: preferences.keyDisplayMode)
+                    KeyDisplayPreview(font: preferences.keyFont, mode: preferences.keyDisplayMode,
+                                      filter: preferences.keyDisplayFilter)
                         .frame(height: max(76, preferences.keyFontSize * 2.3))
                     if !keys.permissionGranted {
                         HStack {
@@ -116,10 +143,8 @@ struct SettingsView: View {
                 } header: { featureTitle(L10n.text(.keysSection), icon: "keyboard") }
                 Section {
                     Toggle(L10n.text(.enableSpotlight), isOn: $preferences.spotlightEnabled)
-                    Picker(L10n.text(.holdKey), selection: $preferences.shortcut) {
-                        ForEach(SpotlightShortcut.allCases) { shortcut in Text(shortcut.title).tag(shortcut) }
-                    }
-                    .disabled(!preferences.spotlightEnabled)
+                    Text(preferences.shortcuts.spotlight.instruction(for: .spotlight))
+                        .font(.caption).foregroundStyle(.secondary)
                     slider(L10n.text(.brightArea), value: $preferences.spotlightDiameter, range: 120...720, unit: "pt")
                         .disabled(!preferences.spotlightEnabled)
                     slider(L10n.text(.dimLevel), value: $preferences.dimOpacity, range: 0.15...0.9, percent: true)
@@ -133,7 +158,9 @@ struct SettingsView: View {
                     }
                 } header: { featureTitle(L10n.text(.spotlight), icon: "flashlight") }
                 Section {
-                    Toggle(L10n.text(.holdFnToZoom), isOn: $preferences.zoomEnabled)
+                    Toggle(L10n.text(.enableZoom), isOn: $preferences.zoomEnabled)
+                    Text(preferences.shortcuts.zoom.instruction(for: .zoom))
+                        .font(.caption).foregroundStyle(.secondary)
                     slider(L10n.text(.lensSize), value: $preferences.zoomDiameter, range: 160...520, unit: "pt")
                         .disabled(!preferences.zoomEnabled)
                     slider(L10n.text(.zoomScale), value: $preferences.zoomScale, range: 1.5...4, unit: L10n.text(.zoomUnit), decimal: true)
@@ -150,21 +177,26 @@ struct SettingsView: View {
                                 .font(.caption).foregroundStyle(.secondary)
                             Spacer()
                             Button(L10n.text(.permissionSettings)) { zoom.requestPermission() }
+                                .accessibilityIdentifier("zoomPermission")
                         }
-                    }
-                    if let message = zoom.message {
-                        Text(message).font(.caption).foregroundStyle(.secondary)
                     }
                 } header: { featureTitle(L10n.text(.zoom), icon: "zoom-in") }
             }
             .formStyle(.grouped)
             .disabled(!preferences.enabled)
             Divider()
-            HStack {
-                Circle().fill(preferences.enabled ? Color.green : Color.secondary).frame(width: 6, height: 6)
-                Text(preferences.enabled ? L10n.text(.on) : L10n.text(.paused))
-                Spacer()
-                Text(L10n.text(.autoSaved))
+            VStack(spacing: 6) {
+                HStack {
+                    Circle().fill(preferences.enabled ? Color.green : Color.secondary).frame(width: 6, height: 6)
+                    Text(preferences.enabled ? L10n.text(.on) : L10n.text(.paused))
+                    Spacer()
+                    Text(L10n.text(.autoSaved))
+                }
+                if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+                    Text(String(format: L10n.text(.versionFormat), locale: L10n.language.locale, version))
+                        .monospacedDigit()
+                        .accessibilityIdentifier("appVersion")
+                }
             }
             .font(.caption).foregroundStyle(.secondary).padding(.horizontal, 22).padding(.vertical, 12)
         }

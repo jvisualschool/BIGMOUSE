@@ -22,7 +22,7 @@
 "displayPosition" = "표시 위치";
 "inputPermissionRequired" = "입력 모니터링 권한이 필요합니다.";
 "permissionSettings" = "권한 설정…";
-"keysSection" = "키 입력 · Option 두 번";
+"keysSection" = "키 입력";
 "enableSpotlight" = "스포트라이트 사용";
 "holdKey" = "누르고 있을 키";
 "brightArea" = "밝은 영역";
@@ -35,7 +35,7 @@
 "zoomScale" = "확대 배율";
 "zoomUnit" = "배";
 "zoomPermissionRequired" = "줌에 화면 기록 권한이 필요합니다.";
-"zoom" = "줌 · Fn";
+"zoom" = "확대";
 "on" = "켜짐";
 "paused" = "일시 정지됨";
 "autoSaved" = "설정은 자동 저장됩니다";
@@ -66,8 +66,35 @@
 "screenPermissionRestart" = "시스템 설정에서 BigMouse를 허용한 뒤 앱을 다시 실행하세요.";
 "screenPermissionNeeded" = "줌을 사용하려면 화면 기록 권한이 필요합니다.";
 "screenNotFound" = "현재 화면을 찾을 수 없습니다.";
-"zoomStartFailed" = "줌을 시작하지 못했습니다. 권한을 확인한 뒤 Fn을 다시 눌러 주세요.";
-"captureStopped" = "화면 캡처가 중단되었습니다. Fn을 놓았다가 다시 눌러 주세요.";
+"zoomStartFailed" = "확대를 시작하지 못했습니다. 권한을 확인한 뒤 지정한 단축키를 다시 누르세요.";
+"captureStopped" = "화면 캡처가 중단됐습니다. 단축키를 놓았다 다시 누르세요.";
 "keyPermissionNeeded" = "키 입력 표시에 입력 모니터링 권한이 필요합니다.";
 "keyPermissionRestart" = "입력 모니터링을 허용한 뒤 BigMouse를 다시 실행하세요.";
 "keysOn" = "키 입력 켜짐";
+
+"keyFilter" = "표시할 키";
+"shortcutsOnly" = "단축키만";
+"allKeys" = "모든 키";
+"includeSpecialKeys" = "특수키도 표시";
+"specialKeysHelp" = "Enter·Tab·Esc·삭제·방향키·기능키를 표시합니다. 일반 문자와 Space는 숨깁니다.";
+"versionFormat" = "버전 %@";
+
+"shortcutSettings" = "단축키";
+"shortcutNone" = "지정 안 함";
+"shortcutHold" = "%@ 누르는 동안";
+"shortcutDoubleTap" = "%@ 두 번";
+"shortcutToggle" = "%@로 켜기·끄기";
+"shortcutEditHint" = "키를 클릭해 변경하세요.";
+"shortcutReset" = "기본값 복원";
+"shortcutRecordTitle" = "%@ 단축키 지정";
+"shortcutRecordHoldHelp" = "원하는 보조키를 눌렀다 놓으세요. 일반 키는 Command·Control·Option 중 하나와 함께 누르세요. 지정한 키를 누르는 동안 작동합니다.";
+"shortcutRecordToggleHelp" = "원하는 보조키를 눌렀다 놓으세요. 보조키는 두 번 눌러 켜고 끕니다. 일반 키를 Command·Control·Option과 함께 지정하면 한 번 눌러 전환합니다.";
+"shortcutPressKeys" = "지정할 키를 누르세요";
+"shortcutInvalid" = "일반 키는 Command·Control·Option과 함께 지정하세요. Fn은 보조키 조합으로만 지정할 수 있습니다.";
+"shortcutDuplicate" = "%@에서 사용 중인 조합입니다. 다른 키를 지정하세요.";
+"shortcutUnavailable" = "시스템이나 다른 앱에서 사용 중이거나 등록할 수 없는 조합입니다. 다른 키를 지정하세요.";
+"shortcutCancel" = "취소";
+"shortcutApply" = "지정";
+"enableZoom" = "확대 사용";
+
+"screenPermissionHelp" = "시스템 설정 → 개인정보 보호 및 보안 → 화면 기록에서 BigMouse를 허용한 뒤 앱을 다시 실행하세요. 업데이트 후 이미 켜져 있다면 껐다가 다시 켜세요.";

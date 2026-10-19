@@ -5,7 +5,7 @@ The public guide lives at <https://jvibeschool.org/BIGMOUSE/>. The standalone st
 ## Content
 
 - Korean and English instructions for installation, permissions, cursor/click effects, keystrokes, spotlight and magnification.
-- Actual BigMouse 0.7 settings captures, image enlargement, a presentation checklist and 12 FAQs, including optional download file verification.
+- Actual BigMouse 0.7 settings captures, image enlargement, a presentation checklist and 14 FAQs, including optional coffee support and download file verification.
 - A generated voxel hero; see [image provenance and prompt](HERO-IMAGE.md).
 - Links to the v0.7 GitHub app, checksum, release notes and source repository, with a visible unnotarized-build notice.
 
@@ -59,6 +59,28 @@ Commit locally before publishing. Deploy only the contents of `website/` to the 
 Keep `.htaccess` with the upload. It preserves the required `noindex, nofollow` policy, disables directory listings, restricts script/resource origins and denies sensitive file types. Verify HTTPS status, assets, browser console, response security headers and protected paths on the live site. No other project or root server configuration needs to change.
 
 The download area links directly to the GitHub v0.7 app ZIP, release notes and source repository. The SHA-256 link is inside the expandable “Download file verification” FAQ (`#download-verification`), with an explanation in both languages that verification is optional and does not run automatically when the link is opened. Keep the release and signing status consistent with the actual release. Verify asset checksums after publication. Use the same version and bytes on the website and GitHub.
+
+## First-launch warning
+
+The download section links to `#first-launch`, which explains the developer-reported expiry of the annual Apple Developer Program membership and separately identifies the current release as lacking Developer ID signing and notarization. It describes Done, Privacy & Security, Open Anyway and authentication, with links to Apple’s official instructions in the selected language. A matching FAQ links to the guide.
+
+The Korean page includes the user-supplied macOS warning, losslessly converted to `assets/screenshots/gatekeeper-warning-ko.webp`, with image enlargement. The English page uses an English text explanation of the warning instead of showing a Korean system dialog or presenting a fabricated screenshot. This documentation does not change the app binary, signing status or system security settings.
+
+## Hero actions
+
+The top actions show “사용 가이드” / “User guide” as the secondary button and “다운로드” / “Download” as the blue primary button. The download action takes three fifths of the row and uses a larger font and height. Both retain their guide/download section links and adapt to the selected theme.
+
+## Coffee button
+
+The app download row is split into a 3:1 grid: the existing ZIP link takes three quarters and “한잔” / “A cup” takes one quarter. The ratio is preserved on desktop and mobile, and both actions have matching heights. The coffee button opens the published [BigMouse Coffee product](https://www.latpeed.com/products/sHPbV) in a new tab with `noopener noreferrer`. The button includes a decorative coffee-cup icon before the label in both languages, with a white background and blue text/icon in both color modes. Light mode adds a continuous 1px blue border around all four sides to distinguish the button from its white card. On devices with a fine pointer and hover support, hovering over the coffee button enlarges the cup icon and gently wiggles it; the button itself keeps its size. Reduced-motion preferences disable the wiggle and keep only a static, modest enlargement. No bank account details are embedded in the guide or product description.
+
+The bilingual FAQ explains the optional KRW 3,000 coffee contribution, the button’s destination and the continued free use of the app.
+
+The stylesheet and translation script use versioned URLs so existing visitors receive the updated button layout and text after reloading.
+
+The product is registered in the existing J비주얼스쿨 Latpeed account at a fixed price of KRW 3,000. Its Korean and English description links to the BigMouse homepage and briefly introduces cursor/click highlighting, Fn magnification, Control spotlight and the Option-double-tap keystroke display. It explains that BigMouse remains free regardless of support and that no physical drink or paid app features are included. The product title and description do not use middle-dot separators. The public product page and the pre-payment customer-information screen were checked; no purchase or payment was made.
+
+The new square artwork is saved at `artwork/bigmouse-coffee-voxel.png` (1254 × 1254). Its prompt and built-in image-generation provenance are in `artwork/bigmouse-coffee-voxel.prompt.txt`; this untitled image remains a local source asset. A separate version with the title “BigMouse Coffee” is saved at `artwork/bigmouse-coffee-title.png` (1254 × 1254), with its final prompt in `artwork/bigmouse-coffee-title.prompt.txt`. The titled image is the published Latpeed product image; the untitled original remains unchanged.
 
 ## Verified deployment — 2026-10-18
 

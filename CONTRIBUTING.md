@@ -5,12 +5,14 @@
 macOS, Apple Command Line Tools, Swift. 외부 패키지 관리자는 사용하지 않습니다. / No external package manager is required.
 
 ```sh
-bash build.sh
+bash build.sh --development
 bash test.sh
 git diff --check
 ```
 
 검사는 로그인된 macOS 데스크톱 세션에서 실행합니다. 화면 없는 CI에서는 오버레이 검사가 실패할 수 있습니다. / Run tests in a logged-in desktop session; headless CI may not provide a display for overlay tests.
+
+개발 빌드는 별도 식별자의 BigMouse Dev.app을 사용합니다. 공식 앱은 고정 서명 키가 있어야 빌드할 수 있습니다. / Development builds use a separate BigMouse Dev.app identity. Official builds require the pinned signing key. [Signing / 서명](docs/SIGNING.md)
 
 ## 코드 변경 / Changes
 
@@ -22,6 +24,12 @@ git diff --check
 - 둥근 요소의 한쪽 모서리에만 색이 뭉치는 테두리·그라데이션을 사용하지 않습니다. / Avoid one-sided accents that bunch up at rounded corners.
 - 기능 변경에는 해당 동작의 회귀 검사를 추가하고, 문구·단순 배치는 실제 두 언어 UI로 확인합니다. / Test behavior changes and inspect layout in both languages.
 - 커밋 메시지는 영어로 작성합니다. / Use English commit messages.
+
+## 작업 순서 / Workflow
+
+1. 기능과 화면 문구는 한국어·영어를 함께 구현하고, 수정 후 로컬 커밋을 자동으로 만듭니다. / Implement both languages and commit locally after changes.
+2. 기능 검사와 실제 한·영 설정 화면을 확인합니다. 사용자가 직접 테스트하기로 한 경우 앱을 전달하고 결과를 기다립니다. / Run functional checks and inspect both interfaces; wait for feedback when the user is testing the app.
+3. 검증 후 홈페이지와 GitHub를 배포합니다. 공개용 Git 이력을 유지하는 절차는 [배포 안내](docs/DISTRIBUTION.md)를 따릅니다. / Deploy the website and GitHub after validation, following the public-history procedure in the distribution guide.
 
 ## 문제 제보 / Bug reports
 
